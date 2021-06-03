@@ -1,0 +1,15 @@
+{
+    "show": false,
+    "title": "What I teach",
+    "list": [
+        {"name": "Data Science", "description": ""},
+        {"name": "Data Visualization", "description": ""},
+        {"name": "GIS", "description": ""},
+        {"name": "Python", "description": ""},
+        {"name": "React", "description": ""},
+        {"name": "Angular", "description": ""},
+        {"name": "Software Architecture", "description": ""},
+        {"name": "Web Architecture", "description": ""},
+        {"name": "Cloud Architecture", "description": ""}
+    ]
+}

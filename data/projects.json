@@ -1,0 +1,65 @@
+{
+    "title": "What I do",
+    "title_past": "What I did",
+    "list": [
+        {
+            "url": "https://www.openhistorymap.org", 
+            "title": "Open History Map", 
+            "working": true,
+            "repo": "https://github.com/openhistorymap",
+            "repo_icon": "github",
+            "description": "Open History Map is a project started in 2016 in Bologna with the aim of the creation of an Open Street Map of the past. I am president and software architect and developer for the project, using many amazing techs."
+        }, 
+        {
+            "url": "https://www.justplaybo.it", 
+            "title": "Just Play Bologna", 
+            "working": true,
+            "repo": "https://github.com/justplaybo",
+            "repo_icon": "github",
+            "description": "Just Play is a boardgame players association founded in the outskirts of Bologna. It is also a place where we are experimenting with software aided gaming, started during the COVID-19 pandemic"
+        }, {
+            "title": "Freelance work/Consulting",
+            "description": "Send me a mail at marco.montanari@gmail.com for inquiries. My specialities are Data Science, Angular, GIS and geographic data management, python and web architectures"
+        }],
+    "list_past":[
+        {
+            "url": "https://www.mappi-na.it", 
+            "title": "Mappi-na", 
+            "client": "Mappi-na",
+            "working": false,
+            "github": "",
+            "description": ""
+        }, 
+        {
+            "url": "https://www.cityopensource.com", 
+            "title": "City Open Source", 
+            "client": "Mappi-na",
+            "working": false,
+            "github": "",
+            "description": ""
+        }, 
+        {
+            "url": "https://www.monithon.it", 
+            "title": "Monithon", 
+            "client": "Mappi-na",
+            "working": false,
+            "github": "",
+            "description": ""
+        }, 
+        {
+            "url": "https://www.ascuoladiopencoesione.it", 
+            "title": "ASOC", 
+            "client": "Mappi-na",
+            "working": false,
+            "github": "",
+            "description": ""
+        }, 
+        {
+            "title": "Invento", 
+            "working": false,
+            "client": "Laboratori Guglielmo Marconi",
+            "github": "",
+            "description": ""
+        }
+    ]
+}

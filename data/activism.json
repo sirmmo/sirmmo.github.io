@@ -1,0 +1,13 @@
+
+{
+    "title": "Non-profit",
+    "list": [
+        {"url": "", "entity": "Wikimedia Italy", "role": "volunteer"},
+        {"url": "", "entity": "OpenStreetMap", "role": "volunteer"},
+        {"url": "", "entity": "Just Play Bologna", "role": "president"},
+        {"url": "", "entity": "Open History Map", "role": "president"},
+        {"url": "", "entity": "Mensa Italy", "role": "treasurer"},
+        {"url": "", "entity": "onData", "role": "volunteer"},
+        {"url": "", "entity": "Monithon", "role": "volunteer"}
+    ]
+}

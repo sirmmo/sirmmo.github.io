@@ -1,0 +1,13 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "ingmmo.com"
+
+
+[params]
+    theme = "dark" # `dark` or `light`
+
+    
+    # Profile section
+    [params.profile]
+        #name = "IngMMo.com"
+        photo = "images/28135b2.jpg"

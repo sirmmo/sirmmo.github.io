@@ -1,0 +1,10 @@
+{
+    "title": "Hobbies",
+    "list": [
+        {"interest": "Piano, music and sound", "description": ""},
+        {"interest": "Cinema, literature", "description": ""},
+        {"interest": "Architecture, urbanistics", "description": ""},
+        {"interest": "Archaeology, history", "description": ""},
+        {"interest": "Boardgames, videogames", "description": ""}
+    ]
+}

@@ -1,0 +1,12 @@
+{{ if .Site.Data.teaching.show }}
+<h2>
+  <i class="fas fa-cogs"></i>
+  {{ .Site.Data.teaching.title }}
+</h2>
+{{ range.Site.Data.teaching.list }}
+  <div class="row mt-2">
+    <div>{{ .name }} - {{ .description }}</div>
+  </div>
+</div>
+{{ end }}
+{{ end }}

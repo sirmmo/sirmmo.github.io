@@ -1,0 +1,10 @@
+{
+    "title": "What I know",
+    "list": [
+        {"name": "Software Architecture", "requires": []},
+        {"name": "Web Architecture", "requires": ["Software Architecture"]},
+        {"name": "JavaScript", "requires": ["Web Architecture"]},
+        {"name": "TypeScript", "requires": ["JavaScript"]},
+        {"name": "Angular", "requires": ["TypeScript"]}
+    ]
+}

@@ -1,0 +1,27 @@
+<div class="mb-8">
+<h2 class="mt-4">
+    <i class="fas fa-project-diagram"></i> {{ .Site.Data.projects.title }}
+</h2>
+{{ range .Site.Data.projects.list }}
+<div class="block">
+    <div class="title flex flex-row mb-1"> 
+        <div class="flex-1">
+{{ if .url }}
+<h3><a class="text-warning" href="{{ .url }}" target="_blank">{{ .title }}</a></h3>
+{{ end }}
+{{ if not .url}}
+<h3 >{{ .title }}</h3>
+{{ end }}
+</div>
+<div>
+{{ if .repo }}
+<h3><a class="text-warning" href="{{ .repo }}" target="_blank"><i class="fab fa-{{ .repo_icon }} fa-fw"></i></a></h3>
+{{ end }}
+</div>
+</div>
+<p class="mb-0 ml-1">{{ .description | markdownify }}</p>
+
+
+</div>
+{{ end }}
+</div>

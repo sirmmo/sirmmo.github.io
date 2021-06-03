@@ -1,0 +1,31 @@
+{
+    "title":"Social",
+    "list": [
+        [
+            {"name": "facebook", "icon": "facebook", "url":"https://github.com/sirmmo"},
+            {"name": "twitter", "icon": "twitter", "url":"https://github.com/sirmmo"},
+            {"name": "deviantart", "icon": "deviantart", "url":"https://github.com/sirmmo"},
+            {"name": "medium", "icon": "medium", "url":"https://medium.com/@ingmmo"},
+            {"name": "slideshare", "icon": "slideshare", "url":"https://github.com/sirmmo"}
+        ], [
+            {"name": "linkedin", "icon": "linkedin", "url":"https://github.com/sirmmo"},
+            {"name": "github", "icon": "github", "url":"https://github.com/sirmmo"},
+            {"name": "gitlab", "icon": "gitlab", "url":"https://github.com/sirmmo"},
+            {"name": "bitbucket", "icon": "bitbucket", "url":"https://github.com/sirmmo"},
+            {"name": "gitlab", "icon": "docker", "url":"https://github.com/sirmmo"}
+        
+        ], [
+            {"name": "soundcloud", "icon": "soundcloud", "url":"https://github.com/sirmmo"},
+            {"name": "youtube", "icon": "youtube", "url":"https://github.com/sirmmo"},
+            {"name": "twitch", "icon": "twitch", "url":"https://github.com/sirmmo"},
+            {"name": "flickr", "icon": "flickr", "url":"https://github.com/sirmmo"}
+        ],[
+            {"name": "steam", "icon": "steam", "url":"https://github.com/sirmmo"},
+            {"name": "boardgamegeek", "icon": "flipboard", "url":"https://github.com/sirmmo"}
+        ], [
+            {"name": "wikipedia", "icon": "wikipedia-w", "url":"https://github.com/sirmmo"},
+            {"name": "openstreetmap", "icon": "buffer", "url":"https://github.com/sirmmo"},
+            {"name": "orcid", "icon": "orcid", "url":"https://orcid.org/0000-0001-5026-6083"}
+        ]
+    ]
+}
