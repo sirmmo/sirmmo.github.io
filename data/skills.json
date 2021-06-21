@@ -5,6 +5,6 @@
         {"name": "Web Architecture", "requires": ["Software Architecture"]},
         {"name": "JavaScript", "requires": ["Web Architecture"]},
         {"name": "TypeScript", "requires": ["JavaScript"]},
-        {"name": "Angular", "requires": ["TypeScript"]}
+        {"name": "Angular", "icon": "angular", "requires": ["TypeScript"]}
     ]
 }
