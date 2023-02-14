@@ -11,12 +11,28 @@
             "description": "Open History Map is a project started in 2016 in Bologna with the aim of the creation of an Open Street Map of the past. I am president and software architect and developer for the project, using many amazing techs."
         }, 
         {
+            "url": "https://www.fantasymaps.org", 
+            "title": "Open Fantasy Maps", 
+            "working": true,
+            "repo": "https://github.com/openfantasymap",
+            "repo_icon": "github",
+            "description": "Open Fantasy MAps is a project started in 2020 in Bologna based on the work of Open History Map with the aim of the creation of an Open Street Map of fantasy worlds."
+        }, 
+        {
             "url": "https://www.justplaybo.it", 
             "title": "Just Play Bologna", 
             "working": true,
             "repo": "https://github.com/justplaybo",
             "repo_icon": "github",
             "description": "Just Play is a boardgame players association founded in the outskirts of Bologna. It is also a place where we are experimenting with software aided gaming, started during the COVID-19 pandemic"
+        }, 
+        {
+            "url": "https://www.e-dway.com", 
+            "title": "E-Dway", 
+            "working": true,
+            "repo": "https://github.com/e-dway",
+            "repo_icon": "github",
+            "description": "E-Dway is a bike sharing platform written in python, docker, angular and flutter. I am the lead architect and main developer of the platform."
         }, {
             "title": "Freelance work/Consulting",
             "description": "Send me a mail at marco.montanari@gmail.com for inquiries. My specialities are Data Science, Angular, GIS and geographic data management, python and web architectures"
