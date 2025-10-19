@@ -16,7 +16,7 @@
             "working": true,
             "repo": "https://github.com/openfantasymap",
             "repo_icon": "github",
-            "description": "Open Fantasy MAps is a project started in 2020 in Bologna based on the work of Open History Map with the aim of the creation of an Open Street Map of fantasy worlds."
+            "description": "Open Fantasy MAps is a project started in 2020 in Bologna based on the work of Open History Map with the aim of the creation of an Open Street Map of fantasy worlds. It now exposes more than 40+ maps for around 10 playing settngs usable as backdrop for rpg plays via mapping technologies but also as a reference for aventure creation supporting LLMs via specific MCP servers."
         }, 
         {
             "url": "https://www.justplaybo.it", 
