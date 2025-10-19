@@ -8,7 +8,7 @@
             "working": true,
             "repo": "https://github.com/openhistorymap",
             "repo_icon": "github",
-            "description": "Open History Map is a project started in 2016 in Bologna with the aim of the creation of an Open Street Map of the past. I am president and software architect and developer for the project, using many amazing techs."
+            "description": "Open History Map is a project started in 2016 in Bologna with the aim of the creation of an Open Street Map of the past. I am president and software architect and developer for the project, using many amazing techs. Beside the collection of data we are now working on our own MCP server enabling better control of historical LLM content."
         }, 
         {
             "url": "https://www.fantasymaps.org", 
