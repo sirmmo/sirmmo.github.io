@@ -17,6 +17,9 @@
 {{ if .repo }}
 <h3><a class="text-warning" href="{{ .repo }}" target="_blank"><i class="fab fa-{{ .repo_icon }} fa-fw"></i></a></h3>
 {{ end }}
+{{ if .url }}
+<h3><a class="text-warning" href="{{ .url }}" target="_blank"><i class="fab fa-link fa-fw"></i></a></h3>
+{{ end }}
 </div>
 </div>
 <p class="mb-0 ml-1">{{ .description | markdownify }}</p>
