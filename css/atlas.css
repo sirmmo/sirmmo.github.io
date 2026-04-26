@@ -16,6 +16,14 @@
   --cinnabar-mute: oklch(56% 0.140 30);
   --woodblock:    oklch(42% 0.080 145);
 
+  --g-geo:        var(--cinnabar);
+  --g-lang:       oklch(48% 0.085 70);
+  --g-backend:    var(--woodblock);
+  --g-frontend:   oklch(45% 0.115 245);
+  --g-ai:         oklch(46% 0.110 320);
+  --g-realtime:   oklch(48% 0.080 200);
+  --g-ops:        oklch(50% 0.025 60);
+
   --serif: 'Eczar', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --sans:  'Karla', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
   --mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -59,6 +67,12 @@
     --cinnabar:     oklch(64% 0.160 30);
     --cinnabar-mute: oklch(56% 0.130 30);
     --woodblock:    oklch(64% 0.100 145);
+
+    --g-lang:       oklch(70% 0.080 70);
+    --g-frontend:   oklch(70% 0.110 245);
+    --g-ai:         oklch(70% 0.105 320);
+    --g-realtime:   oklch(70% 0.075 200);
+    --g-ops:        oklch(70% 0.020 60);
   }
 }
 
@@ -72,6 +86,12 @@
   --cinnabar:     oklch(64% 0.160 30);
   --cinnabar-mute: oklch(56% 0.130 30);
   --woodblock:    oklch(64% 0.100 145);
+
+  --g-lang:       oklch(70% 0.080 70);
+  --g-frontend:   oklch(70% 0.110 245);
+  --g-ai:         oklch(70% 0.105 320);
+  --g-realtime:   oklch(70% 0.075 200);
+  --g-ops:        oklch(70% 0.020 60);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -782,7 +802,7 @@ a:focus-visible {
 }
 .topology__map {
   width: 100%;
-  min-width: 680px;
+  min-width: 760px;
   height: auto;
   display: block;
   overflow: visible;
@@ -793,16 +813,35 @@ a:focus-visible {
   fill: none;
   opacity: 0.75;
 }
+.topology__edge--meta {
+  stroke: var(--ink-quiet);
+  stroke-width: 0.6;
+  stroke-dasharray: 3 3;
+  opacity: 0.55;
+}
 .topology__node-dot {
   r: 3.4;
-  fill: var(--cinnabar);
+  fill: var(--ink);
 }
 .topology__node--allied .topology__node-dot {
   r: 2.6;
   fill: var(--paper);
-  stroke: var(--ink-quiet);
   stroke-width: 1;
 }
+.topology__node--geo      .topology__node-dot { fill: var(--g-geo); }
+.topology__node--lang     .topology__node-dot { fill: var(--g-lang); }
+.topology__node--backend  .topology__node-dot { fill: var(--g-backend); }
+.topology__node--frontend .topology__node-dot { fill: var(--g-frontend); }
+.topology__node--ai       .topology__node-dot { fill: var(--g-ai); }
+.topology__node--realtime .topology__node-dot { fill: var(--g-realtime); }
+.topology__node--ops      .topology__node-dot { fill: var(--g-ops); }
+.topology__node--allied.topology__node--geo      .topology__node-dot { stroke: var(--g-geo); fill: var(--paper); }
+.topology__node--allied.topology__node--lang     .topology__node-dot { stroke: var(--g-lang); fill: var(--paper); }
+.topology__node--allied.topology__node--backend  .topology__node-dot { stroke: var(--g-backend); fill: var(--paper); }
+.topology__node--allied.topology__node--frontend .topology__node-dot { stroke: var(--g-frontend); fill: var(--paper); }
+.topology__node--allied.topology__node--ai       .topology__node-dot { stroke: var(--g-ai); fill: var(--paper); }
+.topology__node--allied.topology__node--realtime .topology__node-dot { stroke: var(--g-realtime); fill: var(--paper); }
+.topology__node--allied.topology__node--ops      .topology__node-dot { stroke: var(--g-ops); fill: var(--paper); }
 .topology__node-label {
   font-family: var(--serif);
   font-size: 12.5px;
@@ -816,17 +855,25 @@ a:focus-visible {
   fill: var(--ink-faded);
   letter-spacing: 0.02em;
 }
+.topology__node--arch .topology__node-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13.5px;
+  font-weight: 500;
+  fill: var(--ink-quiet);
+  letter-spacing: 0.01em;
+}
 .topology__legend {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-lg);
+  gap: var(--space-md) var(--space-lg);
   font-family: var(--mono);
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--ink-quiet);
-  margin: var(--space-md) 0 0;
+  margin: var(--space-lg) 0 0;
   padding: 0;
 }
 .topology__legend li {
@@ -839,9 +886,24 @@ a:focus-visible {
   height: 9px;
   border-radius: 50%;
   display: inline-block;
+  flex: 0 0 auto;
 }
-.topology__swatch--principal { background: var(--cinnabar); }
+.topology__swatch--geo      { background: var(--g-geo); }
+.topology__swatch--lang     { background: var(--g-lang); }
+.topology__swatch--backend  { background: var(--g-backend); }
+.topology__swatch--frontend { background: var(--g-frontend); }
+.topology__swatch--ai       { background: var(--g-ai); }
+.topology__swatch--realtime { background: var(--g-realtime); }
+.topology__swatch--ops      { background: var(--g-ops); }
 .topology__swatch--allied {
   background: var(--paper);
   border: 1px solid var(--ink-quiet);
+}
+.topology__legend-arch {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--text-sm);
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink-faded);
 }
