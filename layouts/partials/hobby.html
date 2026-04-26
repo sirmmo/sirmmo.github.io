@@ -1,4 +1,8 @@
-<h3>{{ .Site.Data.hobbies.title }}</h3>
-{{ range .Site.Data.hobbies.list }}
-<p class="ml-1">{{ .interest }}</p>
-{{ end }}
+<div class="marg">
+  <h3 class="marg__head">{{ .Site.Data.hobbies.title | default "Hobbies" }}</h3>
+  <ul class="marg__list">
+    {{ range .Site.Data.hobbies.list }}
+      <li><span class="marg__entity">{{ .interest }}</span></li>
+    {{ end }}
+  </ul>
+</div>

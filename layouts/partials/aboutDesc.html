@@ -1,4 +1,3 @@
-<div class="d-flex flex-column mt-2">
-  <h3>{{ .Site.Data.aboutme.title }}</h3>
-  <p class="mb-2 ml-1">{{ .Site.Data.aboutme.description | markdownify }}</p>
+<div class="lede">
+  <p class="lede__body">{{ .Site.Data.aboutme.description | markdownify }}</p>
 </div>

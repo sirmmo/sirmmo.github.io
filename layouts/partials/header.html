@@ -1,22 +1,28 @@
-<header class="flex flex-row justify-between items-center my-2">
-  <i>{{ .Site.Params.name }}</i>
-  <i
-    class="toggle-theme cursor-pointer fas {{ if eq .Site.Params.theme `light` }}fa-moon{{ else }}fa-sun{{ end }} text-gray-600 hover:text-gray-800 dark:text-gray-500 dark:hover:text-gray-200"
-    onclick="toggleTheme(this)"
-  ></i>
+<header class="bar">
+  <span class="bar__name">{{ .Site.Params.name | default "Marco Montanari" }}</span>
+  <button type="button" class="toggle" aria-label="Toggle day or night theme" onclick="toggleTheme()">
+    <svg class="toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-linecap="round"/>
+    </svg>
+    <svg class="toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11Z" stroke-linejoin="round"/>
+    </svg>
+  </button>
 </header>
 
 <script>
-  const toggleTheme = (el) => {
-    const html = document.querySelector("html");
-    if (el.classList.contains("fa-moon")) {
-      el.classList.remove("fa-moon");
-      el.classList.add("fa-sun");
-      html.classList.add("dark");
+  function toggleTheme() {
+    var html = document.documentElement;
+    var isNight = html.classList.contains('theme-night') ||
+      (!html.classList.contains('theme-day') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    html.classList.remove('theme-night', 'theme-day');
+    if (isNight) {
+      html.classList.add('theme-day');
+      try { localStorage.setItem('theme', 'day'); } catch (e) {}
     } else {
-      el.classList.remove("fa-sun");
-      el.classList.add("fa-moon");
-      html.classList.remove("dark");
+      html.classList.add('theme-night');
+      try { localStorage.setItem('theme', 'night'); } catch (e) {}
     }
-  };
+  }
 </script>

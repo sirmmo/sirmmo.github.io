@@ -1,1 +1,7 @@
-<h1>IngMMo.com</h1>
+<header class="masthead reveal">
+  <div class="masthead__title-wrap">
+    <h1 class="masthead__title">{{ .Site.Params.profile.name | default "Marco Montanari" }}</h1>
+    <p class="masthead__sub">{{ .Site.Params.profile.subtitle | default "Engineer · Cartographer of historical &amp; fantastical worlds" | safeHTML }}</p>
+  </div>
+  {{ partial "profilePhoto.html" . }}
+</header>

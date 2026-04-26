@@ -1,3 +1,4 @@
-<footer class="text-center text-sm pt-2 border-gray-500 mt-6">
-  <p>{{ .Site.Params.copyright | markdownify }}</p>
+<footer class="footer">
+  <p>{{ .Site.Params.copyright | default "© Marco Montanari · ingmmo.com" | markdownify }}</p>
+  <p>{{ .Site.Params.profile.coordinates | default "44°29′N · 11°20′E" }} · Bologna · Italia</p>
 </footer>

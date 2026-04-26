@@ -1,4 +1,11 @@
-<h3>{{ .Site.Data.activism.title }}</h3>
-{{ range .Site.Data.activism.list }}
-<p class="ml-1">{{ .entity }}</p>
-{{ end }}
+<div class="marg">
+  <h3 class="marg__head">{{ .Site.Data.activism.title | default "Affiliations" }}</h3>
+  <ul class="marg__list">
+    {{ range .Site.Data.activism.list }}
+      <li>
+        <span class="marg__entity">{{ .entity }}</span>
+        {{ with .role }}<span class="marg__role">{{ . }}</span>{{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</div>

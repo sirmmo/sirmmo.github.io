@@ -1,13 +1,16 @@
 baseURL = "https://ingmmo.com/"
 languageCode = "en-us"
-title = "ingmmo.com"
-
+title = "Marco Montanari · ingmmo.com"
 
 [params]
-    theme = "dark" # `dark` or `light`
+    name = "Marco Montanari"
+    author = "Marco Montanari"
+    copyright = "© Marco Montanari · ingmmo.com"
 
-    
-    # Profile section
     [params.profile]
-        #name = "IngMMo.com"
         photo = "images/28135b2.jpg"
+        name = "Marco Montanari"
+        subtitle = "Engineer · Cartographer of historical &amp; fantastical worlds"
+        location = "Bologna · Italia"
+        coordinates = "44°29′N · 11°20′E"
+        established = "Plate I · MMXXVI"

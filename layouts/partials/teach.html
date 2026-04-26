@@ -1,12 +1,12 @@
 {{ if .Site.Data.teaching.show }}
-<h2>
-  <i class="fas fa-cogs"></i>
-  {{ .Site.Data.teaching.title }}
-</h2>
-{{ range.Site.Data.teaching.list }}
-  <div class="row mt-2">
-    <div>{{ .name }} - {{ .description }}</div>
+<section class="section" aria-labelledby="teach-title">
+  <div class="section__head">
+    <span class="section__num">§ VI</span>
+    <h2 id="teach-title" class="section__title">{{ .Site.Data.teaching.title }}</h2>
+    <span class="section__rule" aria-hidden="true"></span>
   </div>
-</div>
-{{ end }}
+  <div class="formerly">
+    {{ range .Site.Data.teaching.list }}<span>{{ .name }}</span>{{ end }}
+  </div>
+</section>
 {{ end }}

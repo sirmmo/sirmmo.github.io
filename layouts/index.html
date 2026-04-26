@@ -1,25 +1,63 @@
 {{ define "main" }}
-<section
-  class="w-full sm:w-2/5 bg-gray-200 dark:bg-dark2 p-3 rounded shadow flex flex-col justify-between"
->
-  <div>
-    <h1 class="text-center">{{ .Site.Params.profile.name }}</h1>
-    {{ partial "profilePhoto" . }}
-    {{ partial "social" . }}
-    {{ partial "sponsor.html" . }}
-    {{ partial "aboutDesc" . }}
-    {{ partial "hobby.html" . }}
-    {{ partial "activism.html" . }}
-    {{ partial "fellow.html" . }}
-  </div>
-  {{- partial "footer.html" . -}}
-</section>
-
-<section class="w-full sm:w-3/5 px-3">
   {{ partial "intro.html" . }}
-  {{ partial "project.html" . }}
-  {{ partial "teach.html" . }}
-  {{ partial "writing.html" . }}
-  {{ partial "project_past.html" . }}
-</section>
+
+  <div class="body">
+    <section class="reveal reveal--delay-1" aria-label="About">
+      {{ partial "aboutDesc.html" . }}
+    </section>
+
+    <section class="section reveal reveal--delay-2" aria-labelledby="works-title">
+      <div class="section__head">
+        <span class="section__num">§ I</span>
+        <h2 id="works-title" class="section__title">Index of works</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+      {{ partial "project.html" . }}
+    </section>
+
+    <section class="section reveal reveal--delay-3" aria-labelledby="marg-title">
+      <div class="section__head">
+        <span class="section__num">§ II</span>
+        <h2 id="marg-title" class="section__title">Marginalia</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+      <div class="marginalia">
+        {{ partial "activism.html" . }}
+        {{ partial "hobby.html" . }}
+        {{ partial "social.html" . }}
+        {{ partial "fellow.html" . }}
+      </div>
+    </section>
+
+    {{ if .Site.Data.projects.list_past }}
+    <section class="section" aria-labelledby="formerly-title">
+      <div class="section__head">
+        <span class="section__num">§ III</span>
+        <h2 id="formerly-title" class="section__title">Formerly</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+      {{ partial "project_past.html" . }}
+    </section>
+    {{ end }}
+
+    <section class="section" aria-labelledby="dispatches-title">
+      <div class="section__head">
+        <span class="section__num">§ IV</span>
+        <h2 id="dispatches-title" class="section__title">Dispatches</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+      {{ partial "writing.html" . }}
+    </section>
+
+    <section class="section" aria-labelledby="support-title">
+      <div class="section__head">
+        <span class="section__num">§ V</span>
+        <h2 id="support-title" class="section__title">Support</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+      {{ partial "sponsor.html" . }}
+    </section>
+
+    {{ partial "teach.html" . }}
+  </div>
 {{ end }}

@@ -1,9 +1,4 @@
-<div class="flex justify-center w-full">
-  <div class="w-4/5 centered">
-    <img
-      class="my-0 rounded-full"
-      src="{{ .Site.Params.profile.photo | relURL }}"
-      alt="{{ .Site.Params.author }}"
-    />
-  </div>
-</div>
+<figure class="portrait">
+  <img src="{{ .Site.Params.profile.photo | relURL }}" alt="{{ .Site.Params.author | default "Marco Montanari" }}" />
+  <figcaption>{{ .Site.Params.profile.location | default "Bologna · Italia" }}</figcaption>
+</figure>
