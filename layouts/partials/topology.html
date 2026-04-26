@@ -10,13 +10,7 @@
           {{ $from := index (where $nodes "id" $e.from) 0 }}
           {{ $to   := index (where $nodes "id" $e.to)   0 }}
           {{ if and $from $to }}
-            {{ $dx := sub $to.x $from.x }}
-            {{ $dy := sub $to.y $from.y }}
-            {{ $midx := div (add $from.x $to.x) 2.0 }}
-            {{ $midy := div (add $from.y $to.y) 2.0 }}
-            {{ $cx := add $midx (mul $dy 0.06) }}
-            {{ $cy := sub $midy (mul $dx 0.06) }}
-            <path class="topology__edge{{ if eq $e.kind "meta" }} topology__edge--meta{{ end }}" d="M {{ $from.x }},{{ $from.y }} Q {{ $cx }},{{ $cy }} {{ $to.x }},{{ $to.y }}" />
+            <line class="topology__edge{{ if eq $e.kind "meta" }} topology__edge--meta{{ end }}" x1="{{ $from.x }}" y1="{{ $from.y }}" x2="{{ $to.x }}" y2="{{ $to.y }}" />
           {{ end }}
         {{ end }}
       </g>

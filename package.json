@@ -1,0 +1,12 @@
+{
+  "name": "ingmmo-tools",
+  "private": true,
+  "type": "module",
+  "description": "Offline tooling for ingmmo.com — runs the d3-force layout and writes baked coordinates back into data/topology.json. Hugo build is independent and ships no JS.",
+  "scripts": {
+    "bake-topology": "node scripts/bake-topology.mjs"
+  },
+  "devDependencies": {
+    "d3-force": "^3.0.0"
+  }
+}
