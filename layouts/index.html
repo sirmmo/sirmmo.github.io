@@ -15,9 +15,18 @@
       {{ partial "project.html" . }}
     </section>
 
-    <section class="section reveal reveal--delay-3" aria-labelledby="marg-title">
+    <section class="section reveal reveal--delay-3" aria-labelledby="practice-title">
       <div class="section__head">
         <span class="section__num">§ II</span>
+        <h2 id="practice-title" class="section__title">Practice</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </div>
+      {{ partial "practice.html" . }}
+    </section>
+
+    <section class="section" aria-labelledby="marg-title">
+      <div class="section__head">
+        <span class="section__num">§ III</span>
         <h2 id="marg-title" class="section__title">Marginalia</h2>
         <span class="section__rule" aria-hidden="true"></span>
       </div>
@@ -32,7 +41,7 @@
     {{ if .Site.Data.projects.list_past }}
     <section class="section" aria-labelledby="formerly-title">
       <div class="section__head">
-        <span class="section__num">§ III</span>
+        <span class="section__num">§ IV</span>
         <h2 id="formerly-title" class="section__title">Formerly</h2>
         <span class="section__rule" aria-hidden="true"></span>
       </div>
@@ -42,7 +51,7 @@
 
     <section class="section" aria-labelledby="dispatches-title">
       <div class="section__head">
-        <span class="section__num">§ IV</span>
+        <span class="section__num">§ V</span>
         <h2 id="dispatches-title" class="section__title">Dispatches</h2>
         <span class="section__rule" aria-hidden="true"></span>
       </div>
@@ -51,7 +60,7 @@
 
     <section class="section" aria-labelledby="support-title">
       <div class="section__head">
-        <span class="section__num">§ V</span>
+        <span class="section__num">§ VI</span>
         <h2 id="support-title" class="section__title">Support</h2>
         <span class="section__rule" aria-hidden="true"></span>
       </div>

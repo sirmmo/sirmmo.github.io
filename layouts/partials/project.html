@@ -8,6 +8,12 @@
           {{ else }}{{ $p.title }}{{ end }}
         </h3>
         {{ with $p.description }}<div class="work__desc">{{ . | markdownify }}</div>{{ end }}
+        {{ with $p.stack }}
+        <div class="stack" aria-label="Stack">
+          <span class="stack__lead">stack</span>
+          {{ range . }}<span class="stack__item">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
       </div>
       <div class="work__links">
         {{ if $p.url }}<a class="work__link" href="{{ $p.url }}" target="_blank" rel="noopener" aria-label="Visit {{ $p.title }} site">↗ Site</a>{{ end }}

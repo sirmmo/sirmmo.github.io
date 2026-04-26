@@ -2,6 +2,14 @@
   <div class="masthead__title-wrap">
     <h1 class="masthead__title">{{ .Site.Params.profile.name | default "Marco Montanari" }}</h1>
     <p class="masthead__sub">{{ .Site.Params.profile.subtitle | default "Engineer · Cartographer of historical &amp; fantastical worlds" | safeHTML }}</p>
+    <p class="status">
+      <span class="status__dot" aria-hidden="true"></span>
+      <span>Open to consulting</span>
+      <span class="status__sep">·</span>
+      <a href="https://github.com/sirmmo" target="_blank" rel="noopener">@sirmmo</a>
+      <span class="status__sep">·</span>
+      <a href="mailto:marco.montanari@gmail.com">mail</a>
+    </p>
   </div>
   {{ partial "profilePhoto.html" . }}
 </header>

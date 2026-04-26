@@ -3,38 +3,42 @@
     "title_past": "What I did",
     "list": [
         {
-            "url": "https://www.openhistorymap.org", 
-            "title": "Open History Map", 
+            "url": "https://www.openhistorymap.org",
+            "title": "Open History Map",
             "working": true,
             "repo": "https://github.com/openhistorymap",
             "repo_icon": "github",
+            "stack": ["python", "postgis", "openlayers", "openstreetmap", "mcp"],
             "description": "Open History Map is a project started in 2016 in Bologna with the aim of the creation of an Open Street Map of the past. I am president and software architect and developer for the project, using many amazing techs. Beside the collection of data we are now working on our own MCP server enabling better control of historical LLM content."
-        }, 
+        },
         {
-            "url": "https://www.fantasymaps.org", 
-            "title": "Open Fantasy Maps", 
+            "url": "https://www.fantasymaps.org",
+            "title": "Open Fantasy Maps",
             "working": true,
             "repo": "https://github.com/openfantasymap",
             "repo_icon": "github",
+            "stack": ["python", "postgis", "openlayers", "mcp", "rpg"],
             "description": "Open Fantasy MAps is a project started in 2020 in Bologna based on the work of Open History Map with the aim of the creation of an Open Street Map of fantasy worlds. It now exposes more than 40+ maps for around 10 playing settngs usable as backdrop for rpg plays via mapping technologies but also as a reference for aventure creation supporting LLMs via specific MCP servers."
-        }, 
+        },
         {
-            "url": "https://www.justplaybo.it", 
-            "title": "Just Play Bologna", 
+            "url": "https://www.justplaybo.it",
+            "title": "Just Play Bologna",
             "working": true,
             "repo": "https://github.com/justplaybo",
             "repo_icon": "github",
             "description": "Just Play is a boardgame players association founded in the outskirts of Bologna. It is also a place where we are experimenting with software aided gaming, started during the COVID-19 pandemic"
-        }, 
+        },
         {
-            "url": "https://www.e-dway.com", 
-            "title": "E-Dway", 
+            "url": "https://www.e-dway.com",
+            "title": "E-Dway",
             "working": true,
             "repo": "https://github.com/e-dway",
             "repo_icon": "github",
+            "stack": ["python", "docker", "angular", "flutter"],
             "description": "E-Dway is a bike sharing platform written in python, docker, angular and flutter. I am the lead architect and main developer of the platform."
         }, {
             "title": "Freelance work/Consulting",
+            "stack": ["python", "angular", "gis", "data science", "architecture"],
             "description": "Send me a mail at marco.montanari@gmail.com for inquiries. My specialities are Data Science, Angular, GIS and geographic data management, python and web architectures"
         }],
     "list_past":[
