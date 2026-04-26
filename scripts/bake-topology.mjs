@@ -32,15 +32,22 @@ const bandY = {
 
 const archYHint = 380;
 
-// Pin only the cartographic anchors and the orphan-ish real-time pair.
-// The Languages valley (an arch feature) acts as the watershed that
-// collects the language nodes via short-distance meta edges; the
-// languages themselves are free to settle around it.
+// Pin the cartographic features that anchor regions, and the orphan-ish
+// real-time pair. Valley/mountain/plateau act as tight collectors via
+// short-distance meta edges; cloud sits over the Docker/Swarm area.
 const pins = {
-  valley: { fx: 70,  fy: 320 },
-  mqtt:   { fx: 470, fy: 545 },
-  webrtc: { fx: 600, fy: 545 },
+  valley:   { fx: 70,  fy: 320 },
+  mountain: { fx: 520, fy: 160 },
+  plateau:  { fx: 470, fy: 460 },
+  cloud:    { fx: 600, fy: 600 },
+  mqtt:     { fx: 470, fy: 545 },
+  webrtc:   { fx: 600, fy: 545 },
 };
+
+// Arch features that act as tight regional collectors (like valley).
+// Their meta edges use shorter distance / higher strength so they hold
+// their constituent tools close on the map.
+const COLLECTOR_ARCHES = new Set(['valley', 'mountain', 'plateau']);
 
 const nodes = data.nodes.map(n => ({ ...n, ...(pins[n.id] ?? {}) }));
 const edges = data.edges.map(e => ({
@@ -54,14 +61,13 @@ const sim = forceSimulation(nodes)
     .id(d => d.id)
     .distance(e => {
       const src = typeof e.source === 'string' ? e.source : e.source.id;
-      // Valley is a tight collector — shorter, stronger pull.
-      if (src === 'valley') return 55;
+      if (COLLECTOR_ARCHES.has(src)) return 55;
       if (e.meta) return 130;
       return 85;
     })
     .strength(e => {
       const src = typeof e.source === 'string' ? e.source : e.source.id;
-      if (src === 'valley') return 0.7;
+      if (COLLECTOR_ARCHES.has(src)) return 0.7;
       if (e.meta) return 0.25;
       return 0.6;
     }))
@@ -176,17 +182,47 @@ function forceDirection(arch, connected) {
 
 function ovalContour(arch, feature, layer, dir) {
   const rng = makeRng(hashString(`${arch.id}-${layer}`));
-  let major, minor, tilt;
+  let major, minor, tilt, jitter;
   switch (feature) {
-    case 'peak':   major = 58 + layer * 24; minor = 50 + layer * 22; tilt = Math.atan2(dir.dy, dir.dx); break;
-    case 'ridge':  major = 130 + layer * 28; minor = 38 + layer * 14; tilt = Math.atan2(dir.dy, dir.dx); break;
-    case 'range':  major = 150 + layer * 30; minor = 38 + layer * 14; tilt = 0; break;
-    case 'valley': major = 130 + layer * 26; minor = 80 + layer * 22; tilt = 0; break;
-    default:       major = 60 + layer * 22; minor = 55 + layer * 22; tilt = 0;
+    case 'peak':
+      major = 58 + layer * 24; minor = 50 + layer * 22;
+      tilt = Math.atan2(dir.dy, dir.dx);
+      jitter = 9 + layer * 3;
+      break;
+    case 'mountain':
+      // Bigger, more rugged than peak — heavy jitter for jagged ridgeline feel.
+      major = 90 + layer * 32; minor = 78 + layer * 28;
+      tilt = Math.atan2(dir.dy, dir.dx);
+      jitter = 14 + layer * 5;
+      break;
+    case 'plateau':
+      // Flat top: contours tightly nested at the perimeter, low jitter.
+      major = 120 + layer * 9; minor = 78 + layer * 7;
+      tilt = Math.atan2(dir.dy, dir.dx);
+      jitter = 5 + layer * 2;
+      break;
+    case 'ridge':
+      major = 130 + layer * 28; minor = 38 + layer * 14;
+      tilt = Math.atan2(dir.dy, dir.dx);
+      jitter = 9 + layer * 3;
+      break;
+    case 'range':
+      major = 150 + layer * 30; minor = 38 + layer * 14;
+      tilt = 0;
+      jitter = 9 + layer * 3;
+      break;
+    case 'valley':
+      major = 130 + layer * 26; minor = 80 + layer * 22;
+      tilt = 0;
+      jitter = 9 + layer * 3;
+      break;
+    default:
+      major = 60 + layer * 22; minor = 55 + layer * 22;
+      tilt = 0;
+      jitter = 9 + layer * 3;
   }
-  const jitter = 9 + layer * 3;
-  const points = 38;
   const cosT = Math.cos(tilt), sinT = Math.sin(tilt);
+  const points = 38;
   const pts = [];
   for (let i = 0; i < points; i++) {
     const a = (i / points) * 2 * Math.PI;
