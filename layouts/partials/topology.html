@@ -5,6 +5,13 @@
   <div class="topology__scroll">
     <svg class="topology__map" viewBox="{{ $t.viewbox }}" role="img" aria-labelledby="topology-title">
       <title id="topology-title">Topology of practice</title>
+      {{ with $t.contours }}
+      <g class="topology__contours" aria-hidden="true">
+        {{ range $c := . }}
+          <path class="topology__contour topology__contour--layer-{{ $c.layer }}" d="{{ $c.d }}" />
+        {{ end }}
+      </g>
+      {{ end }}
       <g class="topology__edges" aria-hidden="true">
         {{ range $e := $t.edges }}
           {{ $from := index (where $nodes "id" $e.from) 0 }}
