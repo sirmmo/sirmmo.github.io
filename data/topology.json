@@ -1,0 +1,76 @@
+{
+  "title": "Topology",
+  "intro": "A logic map of how the practice fits together — principal terms in cinnabar, allied terms beside them, hairlines for the connections I work across daily.",
+  "viewbox": "0 0 760 540",
+  "nodes": [
+    {"id": "python",      "label": "Python",        "x": 70,  "y": 100, "tier": "principal"},
+    {"id": "typescript",  "label": "TypeScript",    "x": 70,  "y": 220, "tier": "principal"},
+    {"id": "dart",        "label": "Dart",          "x": 70,  "y": 340, "tier": "allied"},
+
+    {"id": "postgis",     "label": "PostGIS",       "x": 220, "y": 30,  "tier": "principal"},
+    {"id": "osm",         "label": "OpenStreetMap", "x": 380, "y": 30,  "tier": "principal"},
+    {"id": "openlayers",  "label": "OpenLayers",    "x": 540, "y": 30,  "tier": "principal"},
+    {"id": "maplibre",    "label": "MapLibre",      "x": 670, "y": 30,  "tier": "principal"},
+    {"id": "leaflet",     "label": "Leaflet",       "x": 540, "y": 80,  "tier": "allied"},
+    {"id": "vectortiles", "label": "vector tiles",  "x": 670, "y": 80,  "tier": "allied"},
+
+    {"id": "django",      "label": "Django",        "x": 220, "y": 100, "tier": "principal"},
+    {"id": "fastapi",     "label": "FastAPI",       "x": 360, "y": 100, "tier": "principal"},
+
+    {"id": "react",       "label": "React",         "x": 220, "y": 220, "tier": "principal"},
+    {"id": "nextjs",      "label": "Next.js",       "x": 350, "y": 220, "tier": "principal"},
+    {"id": "angular",     "label": "Angular",       "x": 480, "y": 220, "tier": "principal"},
+    {"id": "flutter",     "label": "Flutter",       "x": 620, "y": 220, "tier": "principal"},
+
+    {"id": "mcp",         "label": "MCP",           "x": 220, "y": 340, "tier": "principal"},
+    {"id": "ollama",      "label": "Ollama",        "x": 350, "y": 340, "tier": "principal"},
+    {"id": "genai",       "label": "generative AI", "x": 480, "y": 340, "tier": "principal"},
+    {"id": "n8n",         "label": "n8n",           "x": 640, "y": 340, "tier": "principal"},
+
+    {"id": "mqtt",        "label": "MQTT",          "x": 220, "y": 410, "tier": "principal"},
+    {"id": "webrtc",      "label": "WebRTC",        "x": 350, "y": 410, "tier": "principal"},
+    {"id": "stripe",      "label": "Stripe",        "x": 480, "y": 410, "tier": "principal"},
+
+    {"id": "docker",      "label": "Docker",        "x": 70,  "y": 500, "tier": "principal"},
+    {"id": "swarm",       "label": "Docker Swarm",  "x": 200, "y": 500, "tier": "principal"},
+    {"id": "traefik",     "label": "Traefik",       "x": 360, "y": 500, "tier": "principal"},
+    {"id": "portainer",   "label": "Portainer",     "x": 470, "y": 500, "tier": "principal"},
+    {"id": "matomo",      "label": "Matomo",        "x": 580, "y": 500, "tier": "principal"},
+    {"id": "grafana",     "label": "Grafana",       "x": 680, "y": 500, "tier": "principal"}
+  ],
+  "edges": [
+    {"from": "python",     "to": "django"},
+    {"from": "python",     "to": "fastapi"},
+    {"from": "python",     "to": "postgis"},
+    {"from": "python",     "to": "mcp"},
+    {"from": "python",     "to": "ollama"},
+
+    {"from": "typescript", "to": "react"},
+    {"from": "typescript", "to": "nextjs"},
+    {"from": "typescript", "to": "angular"},
+    {"from": "react",      "to": "nextjs"},
+    {"from": "dart",       "to": "flutter"},
+
+    {"from": "postgis",    "to": "openlayers"},
+    {"from": "postgis",    "to": "maplibre"},
+    {"from": "osm",        "to": "openlayers"},
+    {"from": "osm",        "to": "maplibre"},
+    {"from": "osm",        "to": "leaflet"},
+    {"from": "openlayers", "to": "vectortiles"},
+    {"from": "maplibre",   "to": "vectortiles"},
+
+    {"from": "mcp",        "to": "ollama"},
+    {"from": "mcp",        "to": "n8n"},
+    {"from": "ollama",     "to": "genai"},
+
+    {"from": "stripe",     "to": "fastapi"},
+    {"from": "stripe",     "to": "django"},
+    {"from": "fastapi",    "to": "mqtt"},
+
+    {"from": "docker",     "to": "swarm"},
+    {"from": "swarm",      "to": "traefik"},
+    {"from": "swarm",      "to": "portainer"},
+    {"from": "traefik",    "to": "portainer"},
+    {"from": "matomo",     "to": "grafana"}
+  ]
+}

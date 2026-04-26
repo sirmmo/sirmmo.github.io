@@ -1,0 +1,31 @@
+{{ $t := .Site.Data.topology }}
+{{ $nodes := $t.nodes }}
+<div class="topology">
+  {{ with $t.intro }}<p class="topology__intro">{{ . }}</p>{{ end }}
+  <div class="topology__scroll">
+    <svg class="topology__map" viewBox="{{ $t.viewbox }}" role="img" aria-labelledby="topology-title">
+      <title id="topology-title">Topology of practice</title>
+      <g class="topology__edges" aria-hidden="true">
+        {{ range $e := $t.edges }}
+          {{ $from := index (where $nodes "id" $e.from) 0 }}
+          {{ $to   := index (where $nodes "id" $e.to)   0 }}
+          {{ if and $from $to }}
+            <line class="topology__edge" x1="{{ $from.x }}" y1="{{ $from.y }}" x2="{{ $to.x }}" y2="{{ $to.y }}" />
+          {{ end }}
+        {{ end }}
+      </g>
+      <g class="topology__nodes">
+        {{ range $n := $nodes }}
+          <g class="topology__node topology__node--{{ $n.tier }}" transform="translate({{ $n.x }} {{ $n.y }})">
+            <circle class="topology__node-dot" cx="0" cy="0" />
+            <text class="topology__node-label" x="9" y="4">{{ $n.label }}</text>
+          </g>
+        {{ end }}
+      </g>
+    </svg>
+  </div>
+  <ul class="topology__legend" aria-label="Legend">
+    <li><span class="topology__swatch topology__swatch--principal" aria-hidden="true"></span>principal</li>
+    <li><span class="topology__swatch topology__swatch--allied" aria-hidden="true"></span>allied</li>
+  </ul>
+</div>

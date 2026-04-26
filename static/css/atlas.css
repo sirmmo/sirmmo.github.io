@@ -760,3 +760,88 @@ a:focus-visible {
   border-color: var(--cinnabar);
   color: var(--cinnabar);
 }
+
+/* Topology — logic map of the practice */
+.topology {
+  margin-top: var(--space-2xl);
+}
+.topology__intro {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--text-md);
+  line-height: 1.55;
+  color: var(--ink-faded);
+  max-width: var(--measure);
+  margin: 0 0 var(--space-xl);
+}
+.topology__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 calc(-1 * var(--plate-inner-pad));
+  padding: 0 var(--plate-inner-pad);
+}
+.topology__map {
+  width: 100%;
+  min-width: 680px;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.topology__edge {
+  stroke: var(--hairline);
+  stroke-width: 0.7;
+  fill: none;
+  opacity: 0.75;
+}
+.topology__node-dot {
+  r: 3.4;
+  fill: var(--cinnabar);
+}
+.topology__node--allied .topology__node-dot {
+  r: 2.6;
+  fill: var(--paper);
+  stroke: var(--ink-quiet);
+  stroke-width: 1;
+}
+.topology__node-label {
+  font-family: var(--serif);
+  font-size: 12.5px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+.topology__node--allied .topology__node-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  fill: var(--ink-faded);
+  letter-spacing: 0.02em;
+}
+.topology__legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-quiet);
+  margin: var(--space-md) 0 0;
+  padding: 0;
+}
+.topology__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.topology__swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.topology__swatch--principal { background: var(--cinnabar); }
+.topology__swatch--allied {
+  background: var(--paper);
+  border: 1px solid var(--ink-quiet);
+}
