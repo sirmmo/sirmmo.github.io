@@ -2,7 +2,7 @@
 {
     "title": "Non-profit",
     "list": [
-        {"url": "", "entity": "Wikimedia Italy", "role": "volunteer"},
+        {"url": "", "entity": "Wikimedia Italy", "role": "treasurer"},
         {"url": "", "entity": "OpenStreetMap", "role": "volunteer"},
         {"url": "", "entity": "Just Play Bologna", "role": "president"},
         {"url": "", "entity": "Open History Map", "role": "president"},
