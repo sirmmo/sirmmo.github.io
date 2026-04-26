@@ -2,7 +2,7 @@
    Hand-rolled, no build step. Replaces the prebuilt Tailwind bundle.
 
    Palette: paper / ink / cinnabar / woodblock-green in OKLCH.
-   Type: Eczar (display + small caps) + Karla (body).
+   Type: Eczar (display + small caps) + Karla (body) + JetBrains Mono (metadata).
    Both modes designed; system pref drives default; manual toggle persists. */
 
 :root {
@@ -18,6 +18,7 @@
 
   --serif: 'Eczar', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --sans:  'Karla', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --space-2xs: 4px;
   --space-xs:  8px;
@@ -658,4 +659,104 @@ a:focus-visible {
   border: 1px solid var(--cinnabar);
   padding: var(--space-xs) var(--space-md);
   z-index: 10;
+}
+
+/* ─── Technical metadata ─────────────────────────────────────────── */
+
+/* Status line — sits beneath masthead subtitle */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-faded);
+}
+.status__dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--woodblock);
+  flex-shrink: 0;
+  position: relative;
+}
+.status__dot::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--woodblock);
+  opacity: 0.22;
+  animation: pulse 2.4s var(--ease-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .status__dot::before { animation: none; }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.22; }
+  50%      { transform: scale(1.6); opacity: 0; }
+}
+.status a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--hairline);
+}
+.status a:hover {
+  color: var(--cinnabar);
+  border-bottom-color: var(--cinnabar);
+}
+.status__sep {
+  color: var(--hairline);
+  margin-inline: var(--space-xs);
+}
+
+/* Stack tags — under each project description */
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--space-sm);
+  margin-top: var(--space-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+.stack__lead {
+  color: var(--cinnabar-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+}
+.stack__item {
+  position: relative;
+}
+.stack__item:not(:last-child)::after {
+  content: '·';
+  margin-left: var(--space-sm);
+  color: var(--hairline);
+}
+
+/* Practice — specialties as a code-spec listing */
+.practice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  max-width: var(--measure);
+}
+.practice__item {
+  border: 1px solid var(--hairline);
+  padding: 5px var(--space-sm) 4px;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: border-color 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+.practice__item:hover {
+  border-color: var(--cinnabar);
+  color: var(--cinnabar);
 }
