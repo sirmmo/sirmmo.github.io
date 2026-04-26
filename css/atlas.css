@@ -807,6 +807,15 @@ a:focus-visible {
   display: block;
   overflow: visible;
 }
+.topology__contour {
+  stroke: var(--ink-quiet);
+  stroke-width: 0.5;
+  fill: none;
+  opacity: 0.18;
+}
+.topology__contour--layer-0 { opacity: 0.26; }
+.topology__contour--layer-1 { opacity: 0.18; }
+.topology__contour--layer-2 { opacity: 0.10; }
 .topology__edge {
   stroke: var(--hairline);
   stroke-width: 0.7;
