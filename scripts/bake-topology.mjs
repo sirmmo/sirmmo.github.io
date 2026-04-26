@@ -32,21 +32,14 @@ const bandY = {
 
 const archYHint = 380;
 
-// Pin a few nodes that the link force can't position well on its own:
-// languages need a left-edge spine (otherwise their many links drag them
-// to the centre, or their absence of links lets them drift anywhere),
-// and the real-time pair has too few/no edges to settle.
+// Pin only the cartographic anchors and the orphan-ish real-time pair.
+// The Languages valley (an arch feature) acts as the watershed that
+// collects the language nodes via short-distance meta edges; the
+// languages themselves are free to settle around it.
 const pins = {
-  python:     { fx: 80,  fy: 50  },
-  typescript: { fx: 80,  fy: 130 },
-  javascript: { fx: 80,  fy: 210 },
-  java:       { fx: 80,  fy: 290 },
-  csharp:     { fx: 80,  fy: 370 },
-  php:        { fx: 80,  fy: 450 },
-  c:          { fx: 80,  fy: 530 },
-  cpp:        { fx: 80,  fy: 605 },
-  mqtt:       { fx: 470, fy: 545 },
-  webrtc:     { fx: 600, fy: 545 },
+  valley: { fx: 70,  fy: 320 },
+  mqtt:   { fx: 470, fy: 545 },
+  webrtc: { fx: 600, fy: 545 },
 };
 
 const nodes = data.nodes.map(n => ({ ...n, ...(pins[n.id] ?? {}) }));
@@ -59,8 +52,19 @@ const edges = data.edges.map(e => ({
 const sim = forceSimulation(nodes)
   .force('link', forceLink(edges)
     .id(d => d.id)
-    .distance(e => e.meta ? 130 : 85)
-    .strength(e => e.meta ? 0.25 : 0.6))
+    .distance(e => {
+      const src = typeof e.source === 'string' ? e.source : e.source.id;
+      // Valley is a tight collector — shorter, stronger pull.
+      if (src === 'valley') return 55;
+      if (e.meta) return 130;
+      return 85;
+    })
+    .strength(e => {
+      const src = typeof e.source === 'string' ? e.source : e.source.id;
+      if (src === 'valley') return 0.7;
+      if (e.meta) return 0.25;
+      return 0.6;
+    }))
   .force('charge', forceManyBody().strength(-260))
   .force('collide', forceCollide()
     .radius(d => d.kind === 'arch' ? 60 : 34)
