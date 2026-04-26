@@ -34,11 +34,17 @@ const archYHint = 380;
 
 // Pin a few nodes that the link force can't position well on its own:
 // languages need a left-edge spine (otherwise their many links drag them
-// to the centre), and the real-time pair has too few/no edges to settle.
+// to the centre, or their absence of links lets them drift anywhere),
+// and the real-time pair has too few/no edges to settle.
 const pins = {
-  python:     { fx: 80,  fy: 210 },
-  typescript: { fx: 80,  fy: 350 },
-  dart:       { fx: 80,  fy: 470 },
+  python:     { fx: 80,  fy: 50  },
+  typescript: { fx: 80,  fy: 130 },
+  javascript: { fx: 80,  fy: 210 },
+  java:       { fx: 80,  fy: 290 },
+  csharp:     { fx: 80,  fy: 370 },
+  php:        { fx: 80,  fy: 450 },
+  c:          { fx: 80,  fy: 530 },
+  cpp:        { fx: 80,  fy: 605 },
   mqtt:       { fx: 470, fy: 545 },
   webrtc:     { fx: 600, fy: 545 },
 };
@@ -56,7 +62,9 @@ const sim = forceSimulation(nodes)
     .distance(e => e.meta ? 130 : 85)
     .strength(e => e.meta ? 0.25 : 0.6))
   .force('charge', forceManyBody().strength(-260))
-  .force('collide', forceCollide().radius(34).strength(0.9))
+  .force('collide', forceCollide()
+    .radius(d => d.kind === 'arch' ? 60 : 34)
+    .strength(0.9))
   .force('y', forceY(d => {
     if (d.kind === 'arch') return archYHint;
     return bandY[d.group] ?? HEIGHT / 2;
