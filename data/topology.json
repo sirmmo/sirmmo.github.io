@@ -1,42 +1,50 @@
 {
   "title": "Topology",
-  "intro": "A logic map of how the practice fits together — principal terms in cinnabar, allied terms beside them, hairlines for the connections I work across daily.",
-  "viewbox": "0 0 760 540",
+  "intro": "A logic map of how the practice fits together — tools coloured by region, architectural patterns floating in italics across the gutters, hairlines for the connections I work across daily.",
+  "viewbox": "0 0 880 640",
   "nodes": [
-    {"id": "python",      "label": "Python",        "x": 70,  "y": 100, "tier": "principal"},
-    {"id": "typescript",  "label": "TypeScript",    "x": 70,  "y": 220, "tier": "principal"},
-    {"id": "dart",        "label": "Dart",          "x": 70,  "y": 340, "tier": "allied"},
+    {"id": "python",      "label": "Python",         "x": 60,  "y": 170, "tier": "principal", "group": "lang", "kind": "tool"},
+    {"id": "typescript",  "label": "TypeScript",     "x": 60,  "y": 310, "tier": "principal", "group": "lang", "kind": "tool"},
+    {"id": "dart",        "label": "Dart",           "x": 60,  "y": 460, "tier": "allied",    "group": "lang", "kind": "tool"},
 
-    {"id": "postgis",     "label": "PostGIS",       "x": 220, "y": 30,  "tier": "principal"},
-    {"id": "osm",         "label": "OpenStreetMap", "x": 380, "y": 30,  "tier": "principal"},
-    {"id": "openlayers",  "label": "OpenLayers",    "x": 540, "y": 30,  "tier": "principal"},
-    {"id": "maplibre",    "label": "MapLibre",      "x": 670, "y": 30,  "tier": "principal"},
-    {"id": "leaflet",     "label": "Leaflet",       "x": 540, "y": 80,  "tier": "allied"},
-    {"id": "vectortiles", "label": "vector tiles",  "x": 670, "y": 80,  "tier": "allied"},
+    {"id": "postgis",     "label": "PostGIS",        "x": 200, "y": 30,  "tier": "principal", "group": "geo",  "kind": "tool"},
+    {"id": "osm",         "label": "OpenStreetMap",  "x": 340, "y": 30,  "tier": "principal", "group": "geo",  "kind": "tool"},
+    {"id": "openlayers",  "label": "OpenLayers",     "x": 510, "y": 30,  "tier": "principal", "group": "geo",  "kind": "tool"},
+    {"id": "maplibre",    "label": "MapLibre",       "x": 660, "y": 30,  "tier": "principal", "group": "geo",  "kind": "tool"},
+    {"id": "leaflet",     "label": "Leaflet",        "x": 510, "y": 80,  "tier": "allied",    "group": "geo",  "kind": "tool"},
+    {"id": "vectortiles", "label": "vector tiles",   "x": 660, "y": 80,  "tier": "allied",    "group": "geo",  "kind": "tool"},
 
-    {"id": "django",      "label": "Django",        "x": 220, "y": 100, "tier": "principal"},
-    {"id": "fastapi",     "label": "FastAPI",       "x": 360, "y": 100, "tier": "principal"},
+    {"id": "django",      "label": "Django",         "x": 200, "y": 170, "tier": "principal", "group": "backend", "kind": "tool"},
+    {"id": "fastapi",     "label": "FastAPI",        "x": 340, "y": 170, "tier": "principal", "group": "backend", "kind": "tool"},
+    {"id": "postgres",    "label": "PostgreSQL",     "x": 480, "y": 170, "tier": "principal", "group": "backend", "kind": "tool"},
+    {"id": "redis",       "label": "Redis",          "x": 630, "y": 170, "tier": "principal", "group": "backend", "kind": "tool"},
+    {"id": "stripe",      "label": "Stripe",         "x": 760, "y": 170, "tier": "principal", "group": "backend", "kind": "tool"},
 
-    {"id": "react",       "label": "React",         "x": 220, "y": 220, "tier": "principal"},
-    {"id": "nextjs",      "label": "Next.js",       "x": 350, "y": 220, "tier": "principal"},
-    {"id": "angular",     "label": "Angular",       "x": 480, "y": 220, "tier": "principal"},
-    {"id": "flutter",     "label": "Flutter",       "x": 620, "y": 220, "tier": "principal"},
+    {"id": "microservice", "label": "Microservice architecture", "x": 340, "y": 245, "kind": "arch"},
+    {"id": "fullstack",    "label": "Full-stack architecture",   "x": 480, "y": 380, "kind": "arch"},
 
-    {"id": "mcp",         "label": "MCP",           "x": 220, "y": 340, "tier": "principal"},
-    {"id": "ollama",      "label": "Ollama",        "x": 350, "y": 340, "tier": "principal"},
-    {"id": "genai",       "label": "generative AI", "x": 480, "y": 340, "tier": "principal"},
-    {"id": "n8n",         "label": "n8n",           "x": 640, "y": 340, "tier": "principal"},
+    {"id": "react",       "label": "React",          "x": 200, "y": 310, "tier": "principal", "group": "frontend", "kind": "tool"},
+    {"id": "nextjs",      "label": "Next.js",        "x": 340, "y": 310, "tier": "principal", "group": "frontend", "kind": "tool"},
+    {"id": "angular",     "label": "Angular",        "x": 480, "y": 310, "tier": "principal", "group": "frontend", "kind": "tool"},
+    {"id": "flutter",     "label": "Flutter",        "x": 620, "y": 310, "tier": "principal", "group": "frontend", "kind": "tool"},
 
-    {"id": "mqtt",        "label": "MQTT",          "x": 220, "y": 410, "tier": "principal"},
-    {"id": "webrtc",      "label": "WebRTC",        "x": 350, "y": 410, "tier": "principal"},
-    {"id": "stripe",      "label": "Stripe",        "x": 480, "y": 410, "tier": "principal"},
+    {"id": "software",    "label": "Software architecture",      "x": 200, "y": 380, "kind": "arch"},
+    {"id": "cloud",       "label": "Cloud architecture",         "x": 700, "y": 535, "kind": "arch"},
 
-    {"id": "docker",      "label": "Docker",        "x": 70,  "y": 500, "tier": "principal"},
-    {"id": "swarm",       "label": "Docker Swarm",  "x": 200, "y": 500, "tier": "principal"},
-    {"id": "traefik",     "label": "Traefik",       "x": 360, "y": 500, "tier": "principal"},
-    {"id": "portainer",   "label": "Portainer",     "x": 470, "y": 500, "tier": "principal"},
-    {"id": "matomo",      "label": "Matomo",        "x": 580, "y": 500, "tier": "principal"},
-    {"id": "grafana",     "label": "Grafana",       "x": 680, "y": 500, "tier": "principal"}
+    {"id": "mcp",         "label": "MCP",            "x": 200, "y": 460, "tier": "principal", "group": "ai", "kind": "tool"},
+    {"id": "ollama",      "label": "Ollama",         "x": 340, "y": 460, "tier": "principal", "group": "ai", "kind": "tool"},
+    {"id": "genai",       "label": "generative AI",  "x": 480, "y": 460, "tier": "principal", "group": "ai", "kind": "tool"},
+    {"id": "n8n",         "label": "n8n",            "x": 630, "y": 460, "tier": "principal", "group": "ai", "kind": "tool"},
+
+    {"id": "mqtt",        "label": "MQTT",           "x": 200, "y": 540, "tier": "principal", "group": "realtime", "kind": "tool"},
+    {"id": "webrtc",      "label": "WebRTC",         "x": 340, "y": 540, "tier": "principal", "group": "realtime", "kind": "tool"},
+
+    {"id": "docker",      "label": "Docker",         "x": 60,  "y": 600, "tier": "principal", "group": "ops", "kind": "tool"},
+    {"id": "swarm",       "label": "Docker Swarm",   "x": 200, "y": 600, "tier": "principal", "group": "ops", "kind": "tool"},
+    {"id": "traefik",     "label": "Traefik",        "x": 360, "y": 600, "tier": "principal", "group": "ops", "kind": "tool"},
+    {"id": "portainer",   "label": "Portainer",      "x": 480, "y": 600, "tier": "principal", "group": "ops", "kind": "tool"},
+    {"id": "matomo",      "label": "Matomo",         "x": 620, "y": 600, "tier": "principal", "group": "ops", "kind": "tool"},
+    {"id": "grafana",     "label": "Grafana",        "x": 760, "y": 600, "tier": "principal", "group": "ops", "kind": "tool"}
   ],
   "edges": [
     {"from": "python",     "to": "django"},
@@ -53,11 +61,17 @@
 
     {"from": "postgis",    "to": "openlayers"},
     {"from": "postgis",    "to": "maplibre"},
+    {"from": "postgis",    "to": "postgres"},
     {"from": "osm",        "to": "openlayers"},
     {"from": "osm",        "to": "maplibre"},
     {"from": "osm",        "to": "leaflet"},
     {"from": "openlayers", "to": "vectortiles"},
     {"from": "maplibre",   "to": "vectortiles"},
+
+    {"from": "django",     "to": "postgres"},
+    {"from": "fastapi",    "to": "postgres"},
+    {"from": "django",     "to": "redis"},
+    {"from": "fastapi",    "to": "redis"},
 
     {"from": "mcp",        "to": "ollama"},
     {"from": "mcp",        "to": "n8n"},
@@ -71,6 +85,24 @@
     {"from": "swarm",      "to": "traefik"},
     {"from": "swarm",      "to": "portainer"},
     {"from": "traefik",    "to": "portainer"},
-    {"from": "matomo",     "to": "grafana"}
+    {"from": "matomo",     "to": "grafana"},
+
+    {"from": "microservice", "to": "fastapi",  "kind": "meta"},
+    {"from": "microservice", "to": "postgres", "kind": "meta"},
+    {"from": "microservice", "to": "redis",    "kind": "meta"},
+    {"from": "microservice", "to": "software", "kind": "meta"},
+    {"from": "microservice", "to": "cloud",    "kind": "meta"},
+
+    {"from": "cloud",        "to": "swarm",    "kind": "meta"},
+    {"from": "cloud",        "to": "traefik",  "kind": "meta"},
+    {"from": "cloud",        "to": "grafana",  "kind": "meta"},
+    {"from": "cloud",        "to": "software", "kind": "meta"},
+
+    {"from": "software",     "to": "fullstack","kind": "meta"},
+
+    {"from": "fullstack",    "to": "flutter",  "kind": "meta"},
+    {"from": "fullstack",    "to": "react",    "kind": "meta"},
+    {"from": "fullstack",    "to": "django",   "kind": "meta"},
+    {"from": "fullstack",    "to": "fastapi",  "kind": "meta"}
   ]
 }

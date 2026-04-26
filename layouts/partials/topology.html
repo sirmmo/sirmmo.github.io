@@ -10,22 +10,35 @@
           {{ $from := index (where $nodes "id" $e.from) 0 }}
           {{ $to   := index (where $nodes "id" $e.to)   0 }}
           {{ if and $from $to }}
-            <line class="topology__edge" x1="{{ $from.x }}" y1="{{ $from.y }}" x2="{{ $to.x }}" y2="{{ $to.y }}" />
+            <line class="topology__edge{{ if eq $e.kind "meta" }} topology__edge--meta{{ end }}" x1="{{ $from.x }}" y1="{{ $from.y }}" x2="{{ $to.x }}" y2="{{ $to.y }}" />
           {{ end }}
         {{ end }}
       </g>
       <g class="topology__nodes">
         {{ range $n := $nodes }}
-          <g class="topology__node topology__node--{{ $n.tier }}" transform="translate({{ $n.x }} {{ $n.y }})">
-            <circle class="topology__node-dot" cx="0" cy="0" />
-            <text class="topology__node-label" x="9" y="4">{{ $n.label }}</text>
-          </g>
+          {{ if eq $n.kind "arch" }}
+            <g class="topology__node topology__node--arch" transform="translate({{ $n.x }} {{ $n.y }})">
+              <text class="topology__node-label" text-anchor="middle" y="4">{{ $n.label }}</text>
+            </g>
+          {{ else }}
+            <g class="topology__node topology__node--{{ $n.tier }} topology__node--{{ $n.group }}" transform="translate({{ $n.x }} {{ $n.y }})">
+              <circle class="topology__node-dot" cx="0" cy="0" />
+              <text class="topology__node-label" x="9" y="4">{{ $n.label }}</text>
+            </g>
+          {{ end }}
         {{ end }}
       </g>
     </svg>
   </div>
   <ul class="topology__legend" aria-label="Legend">
-    <li><span class="topology__swatch topology__swatch--principal" aria-hidden="true"></span>principal</li>
-    <li><span class="topology__swatch topology__swatch--allied" aria-hidden="true"></span>allied</li>
+    <li><span class="topology__swatch topology__swatch--geo" aria-hidden="true"></span>Geospatial</li>
+    <li><span class="topology__swatch topology__swatch--lang" aria-hidden="true"></span>Languages</li>
+    <li><span class="topology__swatch topology__swatch--backend" aria-hidden="true"></span>Backend &amp; data</li>
+    <li><span class="topology__swatch topology__swatch--frontend" aria-hidden="true"></span>Frontend</li>
+    <li><span class="topology__swatch topology__swatch--ai" aria-hidden="true"></span>AI / LLM</li>
+    <li><span class="topology__swatch topology__swatch--realtime" aria-hidden="true"></span>Real-time</li>
+    <li><span class="topology__swatch topology__swatch--ops" aria-hidden="true"></span>Platform</li>
+    <li><span class="topology__swatch topology__swatch--allied" aria-hidden="true"></span>Allied</li>
+    <li><em class="topology__legend-arch">Architecture</em></li>
   </ul>
 </div>
