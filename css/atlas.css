@@ -475,6 +475,153 @@ a:focus-visible {
   .work__links { grid-area: links; padding-top: 0; }
 }
 
+/* Recent entries — dated log of fresh tools/libraries.
+   Date is the cartographic spine; rows mirror .work. */
+.recents__lede {
+  font-family: var(--serif);
+  font-size: var(--text-sm);
+  color: var(--ink-quiet);
+  font-style: italic;
+  max-width: 62ch;
+  margin-bottom: var(--space-sm);
+}
+.recents {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.recent {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: clamp(var(--space-md), 3vw, var(--space-xl));
+  align-items: baseline;
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--hairline);
+  position: relative;
+  transition: background 240ms var(--ease-out);
+}
+.recent:last-child { border-bottom: 1px solid var(--hairline); }
+.recent:hover { background: var(--paper-stain); }
+
+.recent__date {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  padding-top: 0.25em;
+  padding-right: var(--space-xs);
+  border-right: 1px dotted var(--hairline);
+  min-width: 4.5ch;
+}
+.recent__mon {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  color: var(--cinnabar);
+  line-height: 1;
+}
+.recent__day {
+  font-family: var(--serif);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-top: 2px;
+  font-variant-numeric: lining-nums;
+}
+
+.recent__body { min-width: 0; }
+.recent__title {
+  font-family: var(--serif);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.recent__title a {
+  border-bottom: none;
+  background-image: linear-gradient(var(--cinnabar), var(--cinnabar));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 260ms var(--ease-out), color 180ms var(--ease-out);
+}
+.recent__title a:hover {
+  background-size: 100% 1px;
+  color: var(--cinnabar);
+}
+.recent__meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-sm);
+}
+.recent__kind {
+  color: var(--cinnabar-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+}
+.recent__owner::before { content: '· '; color: var(--hairline); }
+.recent__lang::before  { content: '· '; color: var(--hairline); }
+.recent__desc {
+  max-width: 62ch;
+  color: var(--ink-faded);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+.recent__desc p { margin: 0; }
+.recent__desc code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  padding: 1px 4px;
+  background: var(--paper-stain);
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+.recent__links {
+  display: flex;
+  gap: var(--space-md);
+  font-family: var(--serif);
+  font-size: 12px;
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+  white-space: nowrap;
+  padding-top: 0.4em;
+  align-self: start;
+}
+.recent__link {
+  color: var(--ink-faded);
+  border-bottom: 1px solid transparent;
+}
+.recent__link:hover {
+  color: var(--cinnabar);
+  border-bottom-color: var(--cinnabar);
+}
+
+@media (max-width: 720px) {
+  .recent {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "date  body"
+      ".     links";
+    row-gap: var(--space-sm);
+  }
+  .recent__date  { grid-area: date; }
+  .recent__body  { grid-area: body; }
+  .recent__links { grid-area: links; padding-top: 0; }
+}
+
 /* Marginalia — ledger of affiliations, hobbies, etc. */
 .marginalia {
   display: grid;
