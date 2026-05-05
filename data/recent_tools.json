@@ -1,0 +1,115 @@
+{
+    "title": "Recent entries",
+    "subtitle": "tools and libraries published in the last 30 days, across personal and org accounts",
+    "window": "last 30 days",
+    "list": [
+        {
+            "date": "2026-05-05",
+            "name": "dem-drawer",
+            "owner": "sirmmo",
+            "url": "https://github.com/sirmmo/dem-drawer",
+            "lang": "TypeScript",
+            "kind": "browser tool",
+            "description": "Browser-based DEM editor with live 3D preview and GeoTIFF export — paint a heightmap, see the terrain in real time, ship it as a georeferenced raster."
+        },
+        {
+            "date": "2026-05-05",
+            "name": "hugo-cdn",
+            "owner": "sirmmo",
+            "url": "https://github.com/sirmmo/hugo-cdn",
+            "lang": "Hugo",
+            "kind": "template",
+            "description": "Hugo template that turns a content tree into a static CDN catalog: every collection and asset gets a JSON descriptor plus a `.well-known/cdn.json` entry-point. Deployable to Pages or Netlify, no extra service."
+        },
+        {
+            "date": "2026-05-04",
+            "name": "ohm-zotero-chrome",
+            "owner": "openhistorymap",
+            "url": "https://github.com/openhistorymap/ohm-zotero-chrome",
+            "lang": "JavaScript",
+            "kind": "browser extension",
+            "description": "Chrome extension that attaches the current page or any link as a linked-URL attachment to an existing Zotero item. Companion to the OHM Zotero plugin."
+        },
+        {
+            "date": "2026-05-02",
+            "name": "ohm-zotero",
+            "owner": "openhistorymap",
+            "url": "https://github.com/openhistorymap/ohm-zotero",
+            "lang": "JavaScript",
+            "kind": "Zotero plugin",
+            "description": "Zotero plugin that manages OHM data descriptors (`ohm:*` tags) so the historical-data index can be curated from a researcher's own bibliography."
+        },
+        {
+            "date": "2026-04-28",
+            "name": "geocontext-qgis",
+            "owner": "openhistorymap",
+            "url": "https://github.com/openhistorymap/geocontext-qgis",
+            "lang": "Python",
+            "kind": "QGIS plugin",
+            "description": "QGIS plugin that exports the current map view as `gcx.json` plus `datasets/*.geojson`, saved locally or pushed to a GitHub repo via the system git."
+        },
+        {
+            "date": "2026-04-23",
+            "name": "ofm-items",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/ofm-items",
+            "lang": "JavaScript",
+            "kind": "Foundry VTT module",
+            "description": "Foundry VTT module: click an object — token or live ghost — and a Gaia-backed dialog answers _given this object and where we are, what can I do with it?_ as a clickable list of affordances."
+        },
+        {
+            "date": "2026-04-23",
+            "name": "ofm-unreal",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/ofm-unreal",
+            "lang": "C++",
+            "kind": "Unreal plugin",
+            "description": "Unreal Engine plugin: point it at a fantasy map name and a zoom level, every visible Mapbox-style layer becomes an actor hierarchy and every feature becomes a primitive or your own Blueprint class. No Mapbox SDK dependency."
+        },
+        {
+            "date": "2026-04-22",
+            "name": "geomqtt",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/geomqtt",
+            "lang": "Rust",
+            "kind": "service",
+            "description": "Redis wrapper with MQTT output for real-time geospatial state — the pipe behind live ghosts and shared worlds in Open Fantasy Maps."
+        },
+        {
+            "date": "2026-04-20",
+            "name": "vineland-runner",
+            "owner": "sirmmo",
+            "url": "https://github.com/sirmmo/vineland_llm",
+            "lang": "Python",
+            "kind": "CLI",
+            "description": "Python CLI for evaluating LLM agents against a psychometric instrument adapted from the Vineland Adaptive Behavior Scales (VABS-3). Targeting NeurIPS 2026 Education Track pilot — 8 models × 24 items × 5 replications."
+        },
+        {
+            "date": "2026-04-10",
+            "name": "georender",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/georender",
+            "lang": "Python",
+            "kind": "service",
+            "description": "Symbolic map rendering service: applies a named JSON ruleset to geospatial data and renders PNGs as slippy tiles, full bbox images, or ad-hoc POSTed GeoJSON. Apache-2.0, shipped as a container."
+        },
+        {
+            "date": "2026-04-09",
+            "name": "openapi-gateway",
+            "owner": "sirmmo",
+            "url": "https://github.com/sirmmo/openapi-gateway",
+            "lang": "Python",
+            "kind": "library",
+            "description": "FastAPI-based API gateway with automatic discovery of services via Docker labels — drop the labels on a container and it picks up the OpenAPI spec and routes through."
+        },
+        {
+            "date": "2026-04-06",
+            "name": "deploykit",
+            "owner": "sirmmo",
+            "url": "https://github.com/sirmmo/deploykit",
+            "lang": "Python",
+            "kind": "CLI",
+            "description": "CLI to deploy multi-service projects to cloud platforms from a single `deployment.json` config. `dk init`, set a token, `dk deploy`."
+        }
+    ]
+}

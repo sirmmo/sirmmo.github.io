@@ -1,0 +1,28 @@
+{{ with .Site.Data.recent_tools }}
+{{ if .subtitle }}<p class="recents__lede">{{ .subtitle }}</p>{{ end }}
+<div class="recents">
+  {{ range .list }}
+    {{ $t := time .date }}
+    <article class="recent">
+      <time class="recent__date" datetime="{{ .date }}">
+        <span class="recent__mon">{{ $t.Format "Jan" }}</span>
+        <span class="recent__day">{{ $t.Format "02" }}</span>
+      </time>
+      <div class="recent__body">
+        <h3 class="recent__title">
+          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+        </h3>
+        <div class="recent__meta" aria-label="metadata">
+          {{ with .kind }}<span class="recent__kind">{{ . }}</span>{{ end }}
+          {{ with .owner }}<span class="recent__owner">{{ . }}</span>{{ end }}
+          {{ with .lang }}<span class="recent__lang">{{ . }}</span>{{ end }}
+        </div>
+        {{ with .description }}<div class="recent__desc">{{ . | markdownify }}</div>{{ end }}
+      </div>
+      <div class="recent__links">
+        <a class="recent__link" href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }} repository">↗ Repo</a>
+      </div>
+    </article>
+  {{ end }}
+</div>
+{{ end }}
