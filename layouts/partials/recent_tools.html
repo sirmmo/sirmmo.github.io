@@ -1,28 +1,84 @@
 {{ with .Site.Data.recent_tools }}
-{{ if .subtitle }}<p class="recents__lede">{{ .subtitle }}</p>{{ end }}
-<div class="recents">
-  {{ range .list }}
-    {{ $t := time .date }}
-    <article class="recent">
-      <time class="recent__date" datetime="{{ .date }}">
+{{ $monos := dict
+  "sirmmo"           "SI"
+  "openhistorymap"   "OH"
+  "openfantasymap"   "OF"
+  "JustPlayBo"       "JB"
+}}
+{{ $orgFull := dict
+  "sirmmo"           "sirmmo"
+  "openhistorymap"   "openhistorymap"
+  "openfantasymap"   "openfantasymap"
+  "JustPlayBo"       "justplaybo"
+}}
+{{ $langClass := dict
+  "Python"      "lang--py"
+  "TypeScript"  "lang--ts"
+  "JavaScript"  "lang--js"
+  "Rust"        "lang--rust"
+  "C++"         "lang--cpp"
+  "Hugo"        "lang--hugo"
+  "HTML"        "lang--hugo"
+}}
+
+{{ $first := index .list 0 }}
+{{ $last  := index .list (sub (len .list) 1) }}
+{{ $tFirst := time $first.date }}
+{{ $tLast  := time $last.date }}
+
+{{ $orgs := slice }}
+{{ range .list }}
+  {{ $orgs = $orgs | append .owner }}
+{{ end }}
+{{ $orgs = uniq $orgs }}
+
+<div class="recents__legend" aria-label="survey legend">
+  <dl class="recents__legend-row">
+    <dt>Survey</dt>
+    <dd>
+      <span class="recents__date-range">
+        {{ $tLast.Format "02 Jan" }} <span class="recents__dash">—</span> {{ $tFirst.Format "02 Jan 2006" }}
+      </span>
+    </dd>
+    <dt>Entries</dt>
+    <dd>{{ len .list }}</dd>
+    <dt>Origins</dt>
+    <dd class="recents__origins">
+      {{ range $i, $o := $orgs }}
+        {{ if gt $i 0 }}<span class="recents__dot" aria-hidden="true">·</span>{{ end }}
+        <span class="recents__origin" title="{{ index $orgFull $o | default $o }}">{{ index $monos $o | default (upper (substr $o 0 2)) }}</span>
+      {{ end }}
+    </dd>
+  </dl>
+</div>
+
+<ol class="recents" reversed>
+  {{ range $i, $r := .list }}
+    {{ $t := time $r.date }}
+    {{ $mono := index $monos $r.owner | default (upper (substr $r.owner 0 2)) }}
+    {{ $owner_full := index $orgFull $r.owner | default $r.owner }}
+    {{ $lc := index $langClass $r.lang | default "" }}
+    <li class="recent {{ if eq $i 0 }}recent--latest{{ end }}" style="--i: {{ $i }};">
+      <time class="recent__date" datetime="{{ $r.date }}">
         <span class="recent__mon">{{ $t.Format "Jan" }}</span>
         <span class="recent__day">{{ $t.Format "02" }}</span>
       </time>
       <div class="recent__body">
         <h3 class="recent__title">
-          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+          <a href="{{ $r.url }}" target="_blank" rel="noopener">{{ $r.name }}</a>
+          {{ if eq $i 0 }}<span class="recent__flag" aria-hidden="true">latest</span>{{ end }}
         </h3>
-        <div class="recent__meta" aria-label="metadata">
-          {{ with .kind }}<span class="recent__kind">{{ . }}</span>{{ end }}
-          {{ with .owner }}<span class="recent__owner">{{ . }}</span>{{ end }}
-          {{ with .lang }}<span class="recent__lang">{{ . }}</span>{{ end }}
+        <div class="recent__meta">
+          {{ with $r.kind }}<span class="recent__kind">{{ . }}</span>{{ end }}
+          {{ with $r.owner }}<span class="recent__owner" title="{{ $owner_full }}">{{ $mono }}</span>{{ end }}
+          {{ with $r.lang }}<span class="recent__lang {{ $lc }}">{{ . }}</span>{{ end }}
         </div>
-        {{ with .description }}<div class="recent__desc">{{ . | markdownify }}</div>{{ end }}
+        {{ with $r.description }}<div class="recent__desc">{{ . | markdownify }}</div>{{ end }}
       </div>
       <div class="recent__links">
-        <a class="recent__link" href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }} repository">↗ Repo</a>
+        <a class="recent__link" href="{{ $r.url }}" target="_blank" rel="noopener" aria-label="{{ $r.name }} repository">↗ Repo</a>
       </div>
-    </article>
+    </li>
   {{ end }}
-</div>
+</ol>
 {{ end }}

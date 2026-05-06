@@ -476,16 +476,68 @@ a:focus-visible {
 }
 
 /* Recent entries — dated log of fresh tools/libraries.
-   Date is the cartographic spine; rows mirror .work. */
-.recents__lede {
-  font-family: var(--serif);
-  font-size: var(--text-sm);
-  color: var(--ink-quiet);
-  font-style: italic;
-  max-width: 62ch;
-  margin-bottom: var(--space-sm);
+   Date is the cartographic spine; the section reads as
+   a survey-plate ledger with monogrammed origins and a
+   colored legend by language. */
+
+/* Legend bar — tabular survey metadata, mono small caps */
+.recents__legend {
+  margin-bottom: var(--space-md);
+  padding-block: var(--space-sm);
+  border-top: 1px solid var(--cinnabar);
+  border-bottom: 1px dotted var(--hairline);
 }
+.recents__legend-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto auto;
+  align-items: baseline;
+  column-gap: var(--space-sm);
+  row-gap: 4px;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.recents__legend dt {
+  font-family: var(--serif);
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--cinnabar);
+}
+.recents__legend dd {
+  margin: 0;
+  color: var(--ink);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.recents__date-range { color: var(--ink); }
+.recents__dash { color: var(--hairline); margin-inline: 2px; }
+.recents__origins { display: inline-flex; gap: 4px; align-items: baseline; }
+.recents__origin {
+  display: inline-block;
+  padding: 2px 5px 1px;
+  border: 1px solid var(--hairline);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--ink);
+  background: transparent;
+}
+.recents__dot { color: var(--hairline); }
+
+@media (max-width: 720px) {
+  .recents__legend-row {
+    grid-template-columns: max-content 1fr;
+    column-gap: var(--space-md);
+  }
+}
+
+/* Entry list — chronologically ordered, no list bullet */
 .recents {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -498,10 +550,22 @@ a:focus-visible {
   border-top: 1px solid var(--hairline);
   position: relative;
   transition: background 240ms var(--ease-out);
+  animation: recent-cascade 520ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 36ms + 80ms);
 }
 .recent:last-child { border-bottom: 1px solid var(--hairline); }
 .recent:hover { background: var(--paper-stain); }
+.recent:focus-within { background: var(--paper-stain); }
 
+@keyframes recent-cascade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .recent { animation: none; }
+}
+
+/* Date glyph — the cartographic coordinate stamp */
 .recent__date {
   display: grid;
   justify-items: center;
@@ -509,7 +573,8 @@ a:focus-visible {
   padding-top: 0.25em;
   padding-right: var(--space-xs);
   border-right: 1px dotted var(--hairline);
-  min-width: 4.5ch;
+  min-width: 4.8ch;
+  position: relative;
 }
 .recent__mon {
   font-family: var(--serif);
@@ -531,6 +596,24 @@ a:focus-visible {
   font-variant-numeric: lining-nums;
 }
 
+/* "You are here" mark on the most recent entry —
+   a thin cinnabar circle around just the day numeral,
+   like a station marker on a survey plate. */
+.recent--latest .recent__day {
+  position: relative;
+  z-index: 1;
+  color: var(--cinnabar);
+}
+.recent--latest .recent__day::after {
+  content: "";
+  position: absolute;
+  inset: -4px -5px -3px -5px;
+  border: 1px solid var(--cinnabar);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
 .recent__body { min-width: 0; }
 .recent__title {
   font-family: var(--serif);
@@ -540,6 +623,10 @@ a:focus-visible {
   letter-spacing: -0.005em;
   color: var(--ink);
   margin-bottom: 4px;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 .recent__title a {
   border-bottom: none;
@@ -549,10 +636,27 @@ a:focus-visible {
   background-position: 0 100%;
   transition: background-size 260ms var(--ease-out), color 180ms var(--ease-out);
 }
-.recent__title a:hover {
-  background-size: 100% 1px;
-  color: var(--cinnabar);
+.recent__title a:hover { background-size: 100% 1px; color: var(--cinnabar); }
+.recent__title a:focus-visible {
+  outline: 2px solid var(--cinnabar);
+  outline-offset: 3px;
+  border-bottom-color: transparent;
 }
+.recent__flag {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  color: var(--cinnabar);
+  padding: 2px 6px 1px;
+  border: 1px solid var(--cinnabar);
+  align-self: center;
+  line-height: 1;
+}
+
+/* Meta line — kind · monogram · language, mono, dotted separators.
+   Language is colored by family; monogram sits in a hairline chip. */
 .recent__meta {
   font-family: var(--mono);
   font-size: 11px;
@@ -561,6 +665,7 @@ a:focus-visible {
   margin-bottom: var(--space-xs);
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0 var(--space-sm);
 }
 .recent__kind {
@@ -569,8 +674,23 @@ a:focus-visible {
   letter-spacing: 0.14em;
   font-size: 10px;
 }
-.recent__owner::before { content: '· '; color: var(--hairline); }
-.recent__lang::before  { content: '· '; color: var(--hairline); }
+.recent__owner {
+  display: inline-block;
+  padding: 1px 5px 0;
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  cursor: help;
+}
+.recent__lang { color: var(--ink-quiet); }
+.recent__lang.lang--py    { color: var(--g-backend); }
+.recent__lang.lang--ts,
+.recent__lang.lang--js    { color: var(--g-frontend); }
+.recent__lang.lang--rust  { color: var(--g-realtime); }
+.recent__lang.lang--cpp   { color: var(--g-ai); }
+.recent__lang.lang--hugo  { color: var(--g-lang); }
+
 .recent__desc {
   max-width: 62ch;
   color: var(--ink-faded);
@@ -584,7 +704,6 @@ a:focus-visible {
   padding: 1px 4px;
   background: var(--paper-stain);
   border: 1px solid var(--hairline);
-  border-radius: 2px;
   color: var(--ink);
 }
 
@@ -607,6 +726,11 @@ a:focus-visible {
 .recent__link:hover {
   color: var(--cinnabar);
   border-bottom-color: var(--cinnabar);
+}
+.recent__link:focus-visible {
+  outline: 2px solid var(--cinnabar);
+  outline-offset: 3px;
+  border-bottom-color: transparent;
 }
 
 @media (max-width: 720px) {
