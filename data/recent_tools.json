@@ -4,112 +4,130 @@
     "window": "last 30 days",
     "list": [
         {
-            "date": "2026-05-05",
-            "name": "dem-drawer",
+            "date": "2026-06-09",
+            "name": "badgecollector",
             "owner": "sirmmo",
-            "url": "https://github.com/sirmmo/dem-drawer",
+            "url": "https://github.com/sirmmo/badgecollector",
+            "lang": "HTML",
+            "kind": "tool",
+            "description": "A public, file-backed badge and certification system — issue and verify credentials with nothing but a static host and a folder of files behind them."
+        },
+        {
+            "date": "2026-06-03",
+            "name": "cardsapi.designer",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/cardsapi.designer",
             "lang": "TypeScript",
             "kind": "browser tool",
-            "description": "Browser-based DEM editor with live 3D preview and GeoTIFF export — paint a heightmap, see the terrain in real time, ship it as a georeferenced raster."
+            "description": "CardForge — a browser-based TCG card designer that uses a GitHub repo as its backend. Shared starter layouts ship separately as cardforge-templates."
         },
         {
-            "date": "2026-05-05",
-            "name": "hugo-cdn",
-            "owner": "sirmmo",
-            "url": "https://github.com/sirmmo/hugo-cdn",
-            "lang": "Hugo",
-            "kind": "template",
-            "description": "Hugo template that turns a content tree into a static CDN catalog: every collection and asset gets a JSON descriptor plus a `.well-known/cdn.json` entry-point. Deployable to Pages or Netlify, no extra service."
-        },
-        {
-            "date": "2026-05-04",
-            "name": "ohm-zotero-chrome",
-            "owner": "openhistorymap",
-            "url": "https://github.com/openhistorymap/ohm-zotero-chrome",
-            "lang": "JavaScript",
-            "kind": "browser extension",
-            "description": "Chrome extension that attaches the current page or any link as a linked-URL attachment to an existing Zotero item. Companion to the OHM Zotero plugin."
-        },
-        {
-            "date": "2026-05-02",
-            "name": "ohm-zotero",
-            "owner": "openhistorymap",
-            "url": "https://github.com/openhistorymap/ohm-zotero",
-            "lang": "JavaScript",
-            "kind": "Zotero plugin",
-            "description": "Zotero plugin that manages OHM data descriptors (`ohm:*` tags) so the historical-data index can be curated from a researcher's own bibliography."
-        },
-        {
-            "date": "2026-04-28",
-            "name": "geocontext-qgis",
-            "owner": "openhistorymap",
-            "url": "https://github.com/openhistorymap/geocontext-qgis",
-            "lang": "Python",
-            "kind": "QGIS plugin",
-            "description": "QGIS plugin that exports the current map view as `gcx.json` plus `datasets/*.geojson`, saved locally or pushed to a GitHub repo via the system git."
-        },
-        {
-            "date": "2026-04-23",
-            "name": "ofm-items",
+            "date": "2026-06-02",
+            "name": "avatars",
             "owner": "openfantasymap",
-            "url": "https://github.com/openfantasymap/ofm-items",
-            "lang": "JavaScript",
-            "kind": "Foundry VTT module",
-            "description": "Foundry VTT module: click an object — token or live ghost — and a Gaia-backed dialog answers _given this object and where we are, what can I do with it?_ as a clickable list of affordances."
-        },
-        {
-            "date": "2026-04-23",
-            "name": "ofm-unreal",
-            "owner": "openfantasymap",
-            "url": "https://github.com/openfantasymap/ofm-unreal",
-            "lang": "C++",
-            "kind": "Unreal plugin",
-            "description": "Unreal Engine plugin: point it at a fantasy map name and a zoom level, every visible Mapbox-style layer becomes an actor hierarchy and every feature becomes a primitive or your own Blueprint class. No Mapbox SDK dependency."
-        },
-        {
-            "date": "2026-04-22",
-            "name": "geomqtt",
-            "owner": "openfantasymap",
-            "url": "https://github.com/openfantasymap/geomqtt",
-            "lang": "Rust",
-            "kind": "service",
-            "description": "Redis wrapper with MQTT output for real-time geospatial state — the pipe behind live ghosts and shared worlds in Open Fantasy Maps."
-        },
-        {
-            "date": "2026-04-20",
-            "name": "vineland-runner",
-            "owner": "sirmmo",
-            "url": "https://github.com/sirmmo/vineland_llm",
-            "lang": "Python",
-            "kind": "CLI",
-            "description": "Python CLI for evaluating LLM agents against a psychometric instrument adapted from the Vineland Adaptive Behavior Scales (VABS-3). Targeting NeurIPS 2026 Education Track pilot — 8 models × 24 items × 5 replications."
-        },
-        {
-            "date": "2026-04-10",
-            "name": "georender",
-            "owner": "openfantasymap",
-            "url": "https://github.com/openfantasymap/georender",
+            "url": "https://github.com/openfantasymap/avatars",
             "lang": "Python",
             "kind": "service",
-            "description": "Symbolic map rendering service: applies a named JSON ruleset to geospatial data and renders PNGs as slippy tiles, full bbox images, or ad-hoc POSTed GeoJSON. Apache-2.0, shipped as a container."
+            "description": "Shared in-character avatar chat API behind the OHM ruler galleries at people.ofthepast.org. OpenAI-compatible surface, deployed on Vercel."
         },
         {
-            "date": "2026-04-09",
-            "name": "openapi-gateway",
+            "date": "2026-05-29",
+            "name": "lcars-core",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/lcars-core",
+            "lang": "Stylus",
+            "kind": "UI library",
+            "description": "LCARS (Star Trek) UI: a themeable Stylus/CSS layer plus a small data-binding runtime. Core of a family — React (lcars-react) and Angular (lcars-ngx) wrappers ship alongside it."
+        },
+        {
+            "date": "2026-05-26",
+            "name": "coordinatore",
             "owner": "sirmmo",
-            "url": "https://github.com/sirmmo/openapi-gateway",
+            "url": "https://github.com/sirmmo/coordinatore",
+            "lang": "Python",
+            "kind": "Telegram bot",
+            "description": "Rule-agnostic Telegram bot that coordinates multi-table tabletop sessions. Games are plain YAML configs; one deployment runs many concurrent sessions of different games. First config: Vespri 1282."
+        },
+        {
+            "date": "2026-05-26",
+            "name": "py-regiondo",
+            "owner": "e-dway",
+            "url": "https://github.com/e-dway/py-regiondo",
+            "lang": "Python",
+            "kind": "API client",
+            "description": "Python client for the Regiondo Booking API — the experiences-booking layer behind the E-Dway hop-on hub."
+        },
+        {
+            "date": "2026-05-25",
+            "name": "django-ninja-spatial",
+            "owner": "sirmmo",
+            "url": "https://github.com/sirmmo/django-ninja-spatial",
             "lang": "Python",
             "kind": "library",
-            "description": "FastAPI-based API gateway with automatic discovery of services via Docker labels — drop the labels on a container and it picks up the OpenAPI spec and routes through."
+            "description": "GeoJSON and Mapbox Vector Tile serialization for django-ninja on top of GeoDjango — spatial responses without leaving the type-checked schema layer."
         },
         {
-            "date": "2026-04-06",
-            "name": "deploykit",
-            "owner": "sirmmo",
-            "url": "https://github.com/sirmmo/deploykit",
+            "date": "2026-05-25",
+            "name": "maplibre-grid",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/maplibre-grid",
+            "lang": "TypeScript",
+            "kind": "library",
+            "description": "Client-side square and hexagonal VTT grid generation for MapLibre GL JS — drop a tabletop grid over any fantasy map in the browser."
+        },
+        {
+            "date": "2026-05-18",
+            "name": "harris-mcp",
+            "owner": "openhistorymap",
+            "url": "https://github.com/openhistorymap/harris-mcp",
             "lang": "Python",
-            "kind": "CLI",
-            "description": "CLI to deploy multi-service projects to cloud platforms from a single `deployment.json` config. `dk init`, set a token, `dk deploy`."
+            "kind": "MCP server",
+            "description": "Model Context Protocol server for reading and auditably editing Harris matrices (archaeological stratigraphy). HMDP/CSV/XLSX/HMC adapters, an LLM-tuned read surface, and a changelog-backed write surface across a whole corpus."
+        },
+        {
+            "date": "2026-05-18",
+            "name": "badger",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/badger",
+            "lang": "Kotlin",
+            "kind": "library",
+            "description": "SuperBand BLE badge library in Kotlin Multiplatform, with a Web Bluetooth demo — driving wearable event badges from native or the browser."
+        },
+        {
+            "date": "2026-05-13",
+            "name": "geocontext-app",
+            "owner": "openhistorymap",
+            "url": "https://github.com/openhistorymap/geocontext-app",
+            "lang": "Svelte",
+            "kind": "desktop app",
+            "description": "Tauri v2 + SvelteKit editor for GeoContext repositories — the desktop companion to the geocontext-qgis exporter, editing the same gcx.json format directly."
+        },
+        {
+            "date": "2026-05-12",
+            "name": "tileserver_rust",
+            "owner": "openhistorymap",
+            "url": "https://github.com/openhistorymap/tileserver_rust",
+            "lang": "Rust",
+            "kind": "service",
+            "description": "Rust port of ohm_tileserver: a read-only OHM vector-tile API built on axum + deadpool-postgres + mvt — the tile pipe, rewritten for throughput."
+        },
+        {
+            "date": "2026-05-11",
+            "name": "geobard",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/geobard",
+            "lang": "Python",
+            "kind": "library",
+            "description": "Turn GeoJSON into prose: window views, custom prompts, and image-generation prompts via any OpenAI-compatible chat-completions endpoint."
+        },
+        {
+            "date": "2026-05-11",
+            "name": "inspector",
+            "owner": "openfantasymap",
+            "url": "https://github.com/openfantasymap/inspector",
+            "lang": "Python",
+            "kind": "library",
+            "description": "Affordance extraction for embodied scenes — given an object or situation, returns a structured list of affordances suitable for agent planning. The engine behind the ofm-items Foundry module."
         }
     ]
 }
