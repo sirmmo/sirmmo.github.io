@@ -21,7 +21,8 @@
             {"name": "flickr", "icon": "flickr", "url":"https://flickr.com/photos/mrmmo"}
         ],[
             {"name": "steam", "icon": "steam", "url":"https://steamcommunity.com/id/sirmmo/"},
-            {"name": "boardgamegeek", "icon": "flipboard", "url":"https://boardgamegeek.com/user/sirmmo"}
+            {"name": "boardgamegeek", "icon": "flipboard", "url":"https://boardgamegeek.com/user/sirmmo"},
+            {"name": "itch.io", "icon": "itch-io", "url":"https://sirmmo.itch.io/"}
         ], [
             {"name": "wikipedia", "icon": "wikipedia-w", "url":"https://en.wikipedia.org/wiki/User:MMo"},
             {"name": "openstreetmap", "icon": "buffer", "url":"https://www.openstreetmap.org/user/sirmmo"},
