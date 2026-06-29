@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <article class="thesis reveal">
+    <header class="thesis__head">
+      <p class="thesis__plate"><span class="thesis__kicker">Theses</span></p>
+      <h1 class="thesis__title">{{ .Title | default "Thesis" }}</h1>
+      <p class="thesis__subtitle">Long-form arguments — one idea, followed all the way down.</p>
+    </header>
+
+    <div class="dispatches">
+      {{ range .Pages.ByDate.Reverse }}
+        <article class="dispatch">
+          <h2 class="dispatch__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Date }}<time class="dispatch__date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "Jan 2006" }}</time>{{ end }}
+        </article>
+      {{ else }}
+        <p class="dispatches__empty">No theses yet.</p>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}

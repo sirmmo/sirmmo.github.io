@@ -1,0 +1,37 @@
+{{ define "main" }}
+  <article class="thesis reveal">
+
+    {{/* (a) Title + subtitle */}}
+    <header class="thesis__head">
+      <p class="thesis__plate">
+        <span class="thesis__kicker">Thesis</span>
+        {{ with .Date }}
+          <span class="thesis__sep" aria-hidden="true">·</span>
+          <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2006" }}</time>
+        {{ end }}
+      </p>
+      <h1 class="thesis__title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}<p class="thesis__subtitle">{{ . }}</p>{{ end }}
+    </header>
+
+    {{/* (b) The essay body — untouched. No CTAs, product names, or offers
+         are ever injected here; the routing layer lives strictly below. */}}
+    <div class="thesis__body">
+      {{ .Content }}
+    </div>
+
+    {{/* (c) The cartographic neatline: here the essay ends. */}}
+    <div class="thesis__boundary" role="separator" aria-label="Here the essay ends">
+      <span class="thesis__boundary-rule" aria-hidden="true"></span>
+      <span class="thesis__boundary-mark">
+        <span class="thesis__boundary-glyph" aria-hidden="true">◆</span>
+        <span class="thesis__boundary-text">Here the essay ends</span>
+      </span>
+      <span class="thesis__boundary-rule" aria-hidden="true"></span>
+    </div>
+
+    {{/* (d) The routing layer — doors come from front matter, one source of truth. */}}
+    {{ partial "thesis-doors.html" . }}
+
+  </article>
+{{ end }}

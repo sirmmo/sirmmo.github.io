@@ -3,16 +3,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
 
-  <title>Marco Montanari · Bologna · ingmmo.com</title>
+  {{- $isHome := .IsHome -}}
+  {{- $title := cond $isHome "Marco Montanari · Bologna · ingmmo.com" (printf "%s · Marco Montanari" .Title) -}}
+  {{- $desc := cond $isHome "Personal site of Marco Montanari — engineer and cartographer of historical and fantastical worlds. Bologna, Italy." (.Params.subtitle | default .Summary) -}}
+  {{- $ogDesc := cond $isHome "Engineer and cartographer of historical and fantastical worlds. Bologna, Italy." $desc -}}
 
-  <meta name="description" content="Personal site of Marco Montanari — engineer and cartographer of historical and fantastical worlds. Bologna, Italy." />
+  <title>{{ $title }}</title>
+
+  <meta name="description" content="{{ $desc }}" />
   <meta name="keywords" content="Marco Montanari, Open History Map, Open Fantasy Maps, GIS, cartography, Bologna, full-stack, Python, Angular, open data" />
   <meta name="author" content="Marco Montanari" />
 
-  <meta property="og:title" content="Marco Montanari · Bologna · ingmmo.com" />
-  <meta property="og:url" content="https://ingmmo.com/" />
-  <meta property="og:description" content="Engineer and cartographer of historical and fantastical worlds. Bologna, Italy." />
-  <meta property="og:type" content="website" />
+  <link rel="canonical" href="{{ .Params.canonical | default .Permalink }}" />
+
+  <meta property="og:title" content="{{ $title }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:description" content="{{ $ogDesc }}" />
+  <meta property="og:type" content="{{ cond $isHome "website" "article" }}" />
   <meta property="og:image" content="{{ .Site.Params.profile.photo | relURL }}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,6 +38,8 @@
     })();
   </script>
 
+  {{/* Analytics stays OFF the non-commercial thesis layer. */}}
+  {{ if ne .Section "thesis" }}
   <!-- Matomo -->
   <script>
     var _paq = window._paq = window._paq || [];
@@ -45,4 +54,5 @@
       s.parentNode.insertBefore(g, s);
     })();
   </script>
+  {{ end }}
 </head>

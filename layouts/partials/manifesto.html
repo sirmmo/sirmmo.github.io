@@ -1,0 +1,24 @@
+{{/* manifesto.html — homepage hook.
+
+     Pulls `summary_lede` from the latest thesis piece, links to it, and then
+     reuses thesis-doors.html so the door CTAs have a single source of truth
+     (the piece's front matter). Renders nothing if there are no thesis pieces. */}}
+
+{{ $theses := where .Site.RegularPages "Section" "thesis" }}
+{{ with $theses }}
+  {{ $latest := index (.ByDate.Reverse) 0 }}
+  <section class="manifesto reveal" aria-labelledby="manifesto-title">
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">✦</span>
+      <h2 id="manifesto-title" class="section__title">Thesis</h2>
+      <span class="section__rule" aria-hidden="true"></span>
+    </div>
+
+    <a class="manifesto__link" href="{{ $latest.RelPermalink }}">
+      {{ with $latest.Params.summary_lede }}<p class="manifesto__lede">{{ . }}</p>{{ end }}
+      <span class="manifesto__cta">Read “{{ $latest.Title }}” <span class="door__arrow" aria-hidden="true">→</span></span>
+    </a>
+
+    {{ partial "thesis-doors.html" $latest }}
+  </section>
+{{ end }}
