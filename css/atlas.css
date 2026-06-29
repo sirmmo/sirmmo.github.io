@@ -1187,3 +1187,281 @@ a:focus-visible {
   letter-spacing: 0;
   color: var(--ink-faded);
 }
+
+/* ─── Thesis — long-form argument plates ─────────────────────────────
+   Pure essay above the boundary rule; routing (doors) only below it.
+   Reuses the cartographic system: serif reading column, small-caps
+   cinnabar markers, hairline rules, mono metadata. */
+
+.thesis {
+  position: relative;
+  z-index: 1;
+  max-width: 70ch;
+  margin-inline: auto;
+}
+
+/* Head — kicker + plate date, title, deck */
+.thesis__head {
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: var(--space-2xl);
+}
+.thesis__plate {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  font-family: var(--serif);
+  font-size: 11px;
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  color: var(--ink-faded);
+  margin-bottom: var(--space-md);
+}
+.thesis__kicker { color: var(--cinnabar); font-weight: 600; }
+.thesis__plate time { font-variant-numeric: lining-nums; }
+.thesis__sep { color: var(--hairline); }
+.thesis__title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.thesis__subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--text-lg);
+  line-height: 1.4;
+  color: var(--ink-faded);
+  margin-top: var(--space-md);
+  max-width: 46ch;
+}
+
+/* Body — the untouched essay. No CTA styles ever live here. */
+.thesis__body {
+  font-family: var(--serif);
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--ink);
+}
+.thesis__body > * + * { margin-top: var(--space-lg); }
+.thesis__body > p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-weight: 700;
+  float: left;
+  font-size: 4.2em;
+  line-height: 0.82;
+  padding: 0.04em 0.1em 0 0;
+  margin: 0.04em 0.1em -0.08em 0;
+  color: var(--cinnabar);
+}
+.thesis__body h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: var(--text-xl);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-top: var(--space-2xl);
+}
+.thesis__body h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  line-height: 1.2;
+  color: var(--ink);
+  margin-top: var(--space-xl);
+}
+.thesis__body h4 {
+  font-family: var(--serif);
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: var(--text-md);
+  color: var(--ink-faded);
+  margin-top: var(--space-xl);
+}
+.thesis__body blockquote {
+  border-left: 2px solid var(--cinnabar);
+  padding-left: var(--space-lg);
+  font-style: italic;
+  color: var(--ink-faded);
+}
+.thesis__body ul,
+.thesis__body ol { padding-left: 1.3em; }
+.thesis__body li + li { margin-top: var(--space-xs); }
+.thesis__body li::marker { color: var(--cinnabar-mute); }
+.thesis__body a {
+  border-bottom: 1px solid var(--cinnabar);
+}
+.thesis__body code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  padding: 1px 5px;
+  background: var(--paper-stain);
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+}
+.thesis__body pre {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  background: var(--paper-stain);
+  border: 1px solid var(--hairline);
+  padding: var(--space-md);
+  overflow-x: auto;
+}
+.thesis__body pre code { padding: 0; border: 0; background: none; }
+.thesis__body hr {
+  border: 0;
+  height: 1px;
+  background: var(--hairline);
+  margin-block: var(--space-xl);
+}
+.thesis__body figure figcaption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--ink-faded);
+  margin-top: var(--space-xs);
+}
+
+/* Boundary — the cartographic neatline: "here the essay ends".
+   A deliberate survey rule, not a generic <hr>. Marks the hard line
+   between the non-commercial essay and the routing layer below. */
+.thesis__boundary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-block: var(--space-3xl) var(--space-2xl);
+}
+.thesis__boundary-rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--hairline) 18%, var(--hairline) 82%, transparent);
+}
+.thesis__boundary-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex: 0 0 auto;
+  font-family: var(--serif);
+  font-size: 11px;
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  color: var(--ink-faded);
+  white-space: nowrap;
+}
+.thesis__boundary-glyph { color: var(--cinnabar); font-size: 9px; }
+
+/* Doors — the routing layer. Three audiences as a legend of bearings.
+   Appears only below the boundary, or in the home manifesto. */
+.doors { margin-top: var(--space-xl); }
+.doors__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+.doors__num {
+  font-family: var(--serif);
+  font-size: 12px;
+  color: var(--cinnabar);
+  font-weight: 600;
+}
+.doors__title {
+  font-family: var(--serif);
+  font-size: var(--text-sm);
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  color: var(--ink);
+  flex: 0 0 auto;
+}
+.doors__rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--hairline);
+  align-self: center;
+}
+.doors__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+.door {
+  display: grid;
+  align-content: start;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  border: 1px solid var(--hairline);
+  background: transparent;
+  transition: border-color 180ms var(--ease-out), background 180ms var(--ease-out);
+}
+.door:hover { border-color: var(--cinnabar); background: var(--paper-stain); }
+.door:focus-within { border-color: var(--cinnabar); background: var(--paper-stain); }
+.door__audience {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-variant: small-caps;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--cinnabar-mute);
+}
+.door__label {
+  font-family: var(--serif);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  border-bottom: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+}
+a.door__label:hover { color: var(--cinnabar); }
+.door__arrow { font-size: 0.8em; color: var(--cinnabar); }
+.door__label--todo { color: var(--ink-quiet); }
+.door__soon {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  border: 1px solid var(--hairline);
+  padding: 1px 5px 0;
+  align-self: center;
+}
+.door__blurb {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--ink-faded);
+}
+
+/* Manifesto — homepage frontispiece linking to the latest thesis.
+   Reuses .doors below the teaser (one source of truth). */
+.manifesto { display: grid; gap: var(--space-lg); }
+.manifesto__link {
+  border-bottom: none;
+  display: grid;
+  gap: var(--space-sm);
+  max-width: var(--measure);
+}
+.manifesto__lede {
+  font-family: var(--serif);
+  font-size: var(--text-lg);
+  line-height: 1.5;
+  color: var(--ink);
+}
+.manifesto__cta {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  color: var(--ink-faded);
+}
+.manifesto__link:hover .manifesto__lede,
+.manifesto__link:hover .manifesto__cta { color: var(--cinnabar); }
