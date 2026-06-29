@@ -11,11 +11,11 @@ summary_lede: "For thirty years, lock-in was just math: connecting two systems w
 doors:
   - audience: studios
     label: "GaiaWM"
-    href: "TODO"
+    href: "https://gaiawm.github.io/"
     blurb: "This principle, built as a product."
   - audience: research
     label: "OntoRAG & the papers"
-    href: "TODO"
+    href: "https://ontorag.github.io/"
     blurb: "The semantic infrastructure underneath."
   - audience: cto
     label: "Work with me"
