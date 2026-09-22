@@ -1,5 +1,6 @@
 <header class="bar">
   <span class="bar__name">{{ .Site.Params.name | default "Marco Montanari" }}</span>
+  {{ partial "annexes.html" . }}
   <button type="button" class="toggle" aria-label="Toggle day or night theme" onclick="toggleTheme()">
     <svg class="toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
       <circle cx="12" cy="12" r="4"/>

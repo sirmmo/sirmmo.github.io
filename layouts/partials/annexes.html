@@ -1,0 +1,10 @@
+{{/* annexes.html — the companion sites living under this domain, sat in the
+     middle slot of the header bar. Content is data/annexes.json; this partial
+     only decides markup. */}}
+{{ with .Site.Data.annexes.list }}
+<nav class="bar__nav" aria-label="Companion sites">
+  {{ range . }}
+    <a class="bar__link" href="{{ .href }}"{{ with .title }} title="{{ . }}"{{ end }}>{{ .label }}</a>
+  {{ end }}
+</nav>
+{{ end }}

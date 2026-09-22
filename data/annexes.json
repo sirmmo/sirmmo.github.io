@@ -1,0 +1,14 @@
+{
+    "list": [
+        {
+            "label": "Projects",
+            "href": "/projects/",
+            "title": "Every deployed project, as a directory and a graph"
+        },
+        {
+            "label": "Games",
+            "href": "/games/",
+            "title": "The board game collection, synced daily from BoardGameGeek"
+        }
+    ]
+}
