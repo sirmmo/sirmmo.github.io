@@ -1,0 +1,39 @@
+{{ define "main" }}
+  {{/* A tool page: the thesis typography, plus a survey legend and an itinerary of links. */}}
+  <article class="thesis tool reveal">
+
+    <header class="thesis__head">
+      <p class="thesis__plate">
+        <span class="thesis__kicker">{{ .Params.kicker | default "Tool" }}</span>
+        {{ with .Date }}
+          <span class="thesis__sep" aria-hidden="true">·</span>
+          <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2006" }}</time>
+        {{ end }}
+      </p>
+      <h1 class="thesis__title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}<p class="thesis__subtitle">{{ . }}</p>{{ end }}
+    </header>
+
+    {{ with .Params.legend }}
+      <dl class="tool__legend" aria-label="legend">
+        {{ range . }}<div class="tool__legend-row"><dt>{{ .k }}</dt><dd>{{ .v | markdownify }}</dd></div>{{ end }}
+      </dl>
+    {{ end }}
+
+    <div class="thesis__body">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.links }}
+      <nav class="tool__links" aria-label="Where to go next">
+        {{ range . }}
+          <a class="tool__link" href="{{ .url }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>
+            <span class="tool__link-label">{{ .label }}</span>
+            <span class="tool__link-note">{{ .note }}</span>
+          </a>
+        {{ end }}
+      </nav>
+    {{ end }}
+
+  </article>
+{{ end }}

@@ -1465,3 +1465,70 @@ a.door__label:hover { color: var(--cinnabar); }
 }
 .manifesto__link:hover .manifesto__lede,
 .manifesto__link:hover .manifesto__cta { color: var(--cinnabar); }
+
+/* ---------------------------------------------------------------- Tool pages (/stairway/ …)
+   The thesis typography, plus a survey legend under the head and an itinerary of links at the end. */
+.tool__legend {
+  display: grid;
+  gap: 0;
+  margin: calc(-1 * var(--space-lg)) 0 var(--space-2xl);
+  border-top: 1px solid var(--hairline);
+}
+.tool__legend-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: var(--space-md);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--hairline);
+  align-items: baseline;
+}
+.tool__legend dt {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  color: var(--ink-faded);
+}
+.tool__legend dd {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+.tool__legend dd p { margin: 0; }
+.tool__legend dd a { border-bottom: 1px solid var(--cinnabar); }
+.tool .thesis__body ol > li::marker {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  color: var(--cinnabar);
+}
+.tool__links {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--hairline);
+}
+.tool__link {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: var(--space-md);
+  align-items: baseline;
+  padding: var(--space-sm) 0;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px dashed var(--hairline);
+}
+.tool__link-label {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: var(--text-md);
+}
+.tool__link-label::after { content: " ↗"; color: var(--cinnabar); }
+.tool__link-note { font-family: var(--sans); font-size: var(--text-sm); color: var(--ink-faded); }
+.tool__link:hover .tool__link-label { color: var(--cinnabar); }
+@media (max-width: 560px) {
+  .tool__legend-row, .tool__link { grid-template-columns: 1fr; gap: 2px; }
+}
+.tool .thesis__head { border-bottom: 0; margin-bottom: var(--space-lg); padding-bottom: var(--space-md); }
+.tool__legend { margin-top: 0; }

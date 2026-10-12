@@ -4,6 +4,15 @@
     "window": "last 30 days",
     "list": [
         {
+            "date": "2026-10-12",
+            "name": "stairway",
+            "owner": "sirmmo",
+            "url": "https://github.com/sirmmo/stairway",
+            "lang": "Python",
+            "kind": "MCP server",
+            "description": "From an idea in a chat to a running coding agent on my own server: Claude (or opencode, crush) in a fresh folder, reachable from claude.ai, a browser VS Code and Telegram. [More on the page →](/stairway/)"
+        },
+        {
             "date": "2026-06-09",
             "name": "badgecollector",
             "owner": "sirmmo",
