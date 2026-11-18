@@ -1,0 +1,11 @@
+{{/* annex-pointer.html — an in-body reference to a companion site, so the
+     sections that summarise something (§ I works, the games hobby) can hand
+     the reader on to the full version. Call with the annex id:
+       {{ partial "annex-pointer.html" (dict "Site" .Site "id" "projects") }}
+     Copy lives in data/annexes.json. */}}
+{{ $id := .id }}
+{{ range where .Site.Data.annexes.list "id" $id }}
+<p class="annex-pointer">
+  {{ with .pointer }}{{ . }} {{ end }}<a href="{{ .href }}"{{ with .title }} title="{{ . }}"{{ end }}>{{ .pointer_link | default .label }}<span class="annex-pointer__arrow" aria-hidden="true">→</span></a>{{ with .pointer }}.{{ end }}
+</p>
+{{ end }}

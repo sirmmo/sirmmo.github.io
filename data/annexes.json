@@ -1,14 +1,19 @@
 {
     "list": [
         {
+            "id": "projects",
             "label": "Projects",
             "href": "/projects/",
-            "title": "Every deployed project, as a directory and a graph"
+            "title": "Every deployed project, as a directory and a graph",
+            "pointer": "This plate shows the main works. Everything else I've deployed, tools and experiments included, is in the",
+            "pointer_link": "full directory and graph"
         },
         {
+            "id": "games",
             "label": "Games",
             "href": "/games/",
-            "title": "The board game collection, synced daily from BoardGameGeek"
+            "title": "The board game collection, synced daily from BoardGameGeek",
+            "pointer_link": "the shelf"
         }
     ]
 }

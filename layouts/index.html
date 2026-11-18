@@ -15,6 +15,7 @@
         <span class="section__rule" aria-hidden="true"></span>
       </div>
       {{ partial "project.html" . }}
+      {{ partial "annex-pointer.html" (dict "Site" .Site "id" "projects") }}
     </section>
 
     {{ if .Site.Data.recent_tools.list }}

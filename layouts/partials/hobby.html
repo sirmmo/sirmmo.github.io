@@ -2,7 +2,12 @@
   <h3 class="marg__head">{{ .Site.Data.hobbies.title | default "Hobbies" }}</h3>
   <ul class="marg__list">
     {{ range .Site.Data.hobbies.list }}
-      <li><span class="marg__entity">{{ .interest }}</span></li>
+      <li>
+        <span class="marg__entity">{{ .interest }}</span>
+        {{ with .annex }}{{ range where $.Site.Data.annexes.list "id" . }}
+          <a class="marg__more" href="{{ .href }}"{{ with .title }} title="{{ . }}"{{ end }}>{{ .pointer_link | default .label }}<span class="annex-pointer__arrow" aria-hidden="true">→</span></a>
+        {{ end }}{{ end }}
+      </li>
     {{ end }}
   </ul>
 </div>
