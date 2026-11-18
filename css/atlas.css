@@ -191,6 +191,8 @@ a:focus-visible {
 .frame__label--br { bottom: -5px; right: 26px; }
 
 @media (max-width: 700px) {
+  .bar { flex-wrap: wrap; row-gap: var(--space-2xs); }
+  .bar__nav { gap: var(--space-sm); letter-spacing: 0.12em; }
   .frame__label--tr,
   .frame__label--bl,
   .frame__label--br { display: none; }
@@ -214,6 +216,22 @@ a:focus-visible {
   color: var(--ink-faded);
 }
 .bar__name { color: var(--ink); }
+
+/* Companion sites, in the bar's middle slot: space-between seats them between
+   the name and the theme toggle without any margin of their own. */
+.bar__nav {
+  display: flex;
+  gap: var(--space-md);
+}
+.bar__link {
+  color: var(--ink-faded);
+  border-bottom: 1px solid transparent;
+}
+.bar__link:hover,
+.bar__link:focus-visible {
+  color: var(--cinnabar);
+  border-bottom-color: var(--cinnabar);
+}
 
 .toggle {
   border: 1px solid var(--hairline);
@@ -810,6 +828,37 @@ a:focus-visible {
 }
 .elsewhere a:last-child::after { content: ''; margin-left: 0; }
 .elsewhere a:hover { color: var(--cinnabar); }
+
+/* In-body pointers to the companion sites (data/annexes.json) */
+.annex-pointer {
+  margin-top: var(--space-md);
+  max-width: 62ch;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--ink-faded);
+}
+.annex-pointer a,
+.marg__more {
+  color: var(--ink);
+  border-bottom: 1px solid var(--hairline);
+  transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out);
+}
+.annex-pointer a:hover,
+.annex-pointer a:focus-visible,
+.marg__more:hover,
+.marg__more:focus-visible {
+  color: var(--cinnabar);
+  border-bottom-color: var(--cinnabar);
+}
+.annex-pointer__arrow { margin-left: 0.25em; color: var(--cinnabar); }
+.marg__more {
+  flex: 0 0 auto;
+  font-family: var(--serif);
+  font-size: 11px;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
 
 /* Formerly — past works as a dense catalog */
 .formerly {
