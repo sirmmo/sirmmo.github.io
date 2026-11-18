@@ -18,7 +18,7 @@
             "repo": "https://github.com/openfantasymap",
             "repo_icon": "github",
             "stack": ["python", "postgis", "maplibre", "mcp", "rpg"],
-            "description": "Open Fantasy MAps is a project started in 2020 in Bologna based on the work of Open History Map with the aim of the creation of an Open Street Map of fantasy worlds. It now exposes more than 40+ maps for around 10 playing settngs usable as backdrop for rpg plays via mapping technologies but also as a reference for aventure creation supporting LLMs via specific MCP servers."
+            "description": "Open Fantasy Maps is a project started in 2020 in Bologna based on the work of Open History Map with the aim of the creation of an Open Street Map of fantasy worlds. It now exposes more than 40+ maps for around 10 playing settings usable as backdrop for rpg plays via mapping technologies but also as a reference for adventure creation supporting LLMs via specific MCP servers."
         },
         {
             "url": "https://www.justplaybo.it",
@@ -44,8 +44,8 @@
             "client": "Mappi-na",
             "working": true,
             "github": "",
-            "description": "I was responsible for the first migration from Wordpress (for Mappi-na) to the first iteration of CityOpenSource, and now I am working on the latest iteration",
-            "stack": ["node", "next.js", "posrgresql", "vercel"]
+            "description": "I was responsible for the first migration from WordPress (for Mappi-na) to the first iteration of CityOpenSource, and now I am working on the latest iteration",
+            "stack": ["node", "next.js", "postgresql", "vercel"]
         }, {
             "title": "Freelance work/Consulting",
             "stack": ["python", "angular", "gis", "data science", "architecture"],

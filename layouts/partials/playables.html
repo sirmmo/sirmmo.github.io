@@ -1,0 +1,23 @@
+{{/* playables.html — games I make (as opposed to the ones on /games/, which
+     I play). Content is data/playables.json; `play` overrides `url` for the
+     Play link when a game's landing page and its play page differ. */}}
+<ol class="plays">
+  {{ range .Site.Data.playables.list }}
+    {{ $g := . }}
+    {{ $play := .play | default .url }}
+    <li class="play">
+      <span class="play__kind">{{ .kind }}</span>
+      <h3 class="play__title"><a href="{{ .url }}">{{ .title }}</a></h3>
+      {{ with .description }}<p class="play__desc">{{ . }}</p>{{ end }}
+      <div class="play__foot">
+        {{ with .stack }}
+        <span class="play__stack" aria-label="Stack">{{ delimit . " · " }}</span>
+        {{ end }}
+        <span class="play__links">
+          <a class="work__link" href="{{ $play }}" aria-label="Play {{ .title }}">▸ Play</a>
+          {{ with .repo }}<a class="work__link" href="{{ . }}" target="_blank" rel="noopener" aria-label="{{ $g.title }} repository">↗ Repo</a>{{ end }}
+        </span>
+      </div>
+    </li>
+  {{ end }}
+</ol>

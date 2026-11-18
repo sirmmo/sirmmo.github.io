@@ -1,0 +1,37 @@
+{
+    "list": [
+        {
+            "title": "citysim",
+            "kind": "City simulation",
+            "url": "/citysim/",
+            "play": "/citysim/play/",
+            "repo": "https://github.com/sirmmo/citysim",
+            "stack": ["Rust", "WebAssembly", "GeoJSON"],
+            "description": "OpenCity, the GPL city builder, ported to Rust and played in the browser. It can rebuild a city from GeoJSON, so the maps of Open History Map and Open Fantasy Maps become places you can zone and grow."
+        },
+        {
+            "title": "OpenTactics",
+            "kind": "Turn-based tactics",
+            "url": "/opentactics/",
+            "repo": "https://github.com/sirmmo/opentactics",
+            "stack": ["Rust", "WebAssembly", "WebRTC"],
+            "description": "Skirmishes on a square grid: capture cities, build units, take the HQ. The rules are one JSON file and every army plays by the same ones. Against the computer, on one screen, or browser to browser for up to 16 players."
+        },
+        {
+            "title": "OpenFactor",
+            "kind": "Factory building",
+            "url": "/openfactor/",
+            "repo": "https://github.com/sirmmo/openfactor",
+            "stack": ["Rust", "WebAssembly", "WebRTC"],
+            "description": "A factory-building platform on a deterministic simulation: no clock, no floats, no randomness, so saves, replays and co-op sync come for free. An OpenTactics factory can be handed to a friend to run here."
+        },
+        {
+            "title": "Capitan Pachino 64",
+            "kind": "3D platformer",
+            "url": "/pachino64/",
+            "repo": "https://github.com/sirmmo/pachino64",
+            "stack": ["JavaScript", "three.js"],
+            "description": "A tomato pirate goes home to the Garden Isle for 27 Golden Stars across five worlds. Vegetables are friends; steaks and fish are not."
+        }
+    ]
+}
