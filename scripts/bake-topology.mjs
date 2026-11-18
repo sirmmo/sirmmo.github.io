@@ -2,6 +2,11 @@
 // Run via `npm run bake-topology`. Writes coordinates back into the JSON;
 // the Hugo build itself ships no JavaScript.
 //
+// Usage:
+//   npm run bake-topology                  full re-layout (d3-force) + labels + contours
+//   npm run bake-topology -- --keep-layout keep the committed coordinates; only
+//                                          separate colliding labels and redraw contours
+//
 // Forces are stratified — each tool group has a target y-band, languages
 // are pulled to a left x-anchor, architecture nodes float gently toward
 // the middle. The link force then settles the local arrangement organically.
@@ -49,6 +54,12 @@ const pins = {
 // their constituent tools close on the map.
 const COLLECTOR_ARCHES = new Set(['valley', 'mountain', 'plateau']);
 
+// --keep-layout skips the simulation: d3-force runs are not reproducible
+// against hand-tuned or older bakes, so this is how to fix labels without
+// redrawing the whole plate.
+const KEEP_LAYOUT = process.argv.includes('--keep-layout');
+const TICKS = 700;
+
 const nodes = data.nodes.map(n => ({ ...n, ...(pins[n.id] ?? {}) }));
 const edges = data.edges.map(e => ({
   source: e.from,
@@ -56,6 +67,7 @@ const edges = data.edges.map(e => ({
   meta: e.kind === 'meta',
 }));
 
+if (!KEEP_LAYOUT) {
 const sim = forceSimulation(nodes)
   .force('link', forceLink(edges)
     .id(d => d.id)
@@ -86,7 +98,6 @@ const sim = forceSimulation(nodes)
   }).strength(d => d.group === 'lang' ? 0 : (d.kind === 'arch' ? 0.04 : 0.09)))
   .stop();
 
-const TICKS = 700;
 for (let i = 0; i < TICKS; i++) sim.tick();
 
 // Fit & center within a margin without distorting aspect.
@@ -107,18 +118,81 @@ for (const n of nodes) {
   n.x = Math.round(MARGIN.x[0] + padX + (n.x - minX) * s);
   n.y = Math.round(MARGIN.y[0] + padY + (n.y - minY) * s);
 }
+} // !KEEP_LAYOUT
 
-// Compute a tight viewBox around the laid-out nodes so we don't ship
-// empty canvas. Right-side slack accounts for labels that extend right
-// of the dot ("OpenStreetMap" is the longest tool label at ~110px);
-// arch labels are centered so they need slack on both sides.
-const finalXs = nodes.map(n => n.x);
-const finalYs = nodes.map(n => n.y);
-const padLeft = 30, padRight = 130, padTop = 25, padBottom = 30;
-const vbX = Math.min(...finalXs) - padLeft;
-const vbY = Math.min(...finalYs) - padTop;
-const vbW = Math.max(...finalXs) - vbX + padRight;
-const vbH = Math.max(...finalYs) - vbY + padBottom;
+// ---- Label separation ----
+// The collide force above sees each node as a circle around its dot, but the
+// labels are wide text (tool labels run right of the dot, arch labels are
+// centred on it), so neighbours could still print over each other. This pass
+// estimates every label's box and nudges nodes apart until no label overlaps
+// another label or another node's dot.
+//
+// Per-character widths are calibrated against the rendered page (Eczar
+// 12.5px for principal tools, JetBrains Mono 11px for allied, Eczar italic
+// 13.5px for arch features) with a little headroom; keep them in step with
+// .topology__node-label in static/css/atlas.css.
+const LABEL = {
+  principal: { perChar: 7.0, top: 12, h: 17, dx: 9 },
+  allied:    { perChar: 7.0, top: 10, h: 15, dx: 9 },
+  arch:      { perChar: 7.0, top: 14, h: 20 },
+};
+const DOT_R = 6;
+const GAP = 6;
+
+function boxesOf(n) {
+  if (n.kind === 'arch') {
+    const w = n.label.length * LABEL.arch.perChar;
+    return [{ x: n.x - w / 2, y: n.y - LABEL.arch.top, w, h: LABEL.arch.h }];
+  }
+  const L = n.tier === 'allied' ? LABEL.allied : LABEL.principal;
+  return [
+    { x: n.x - DOT_R, y: n.y - DOT_R, w: DOT_R * 2, h: DOT_R * 2, dot: true },
+    { x: n.x + L.dx, y: n.y - L.top, w: n.label.length * L.perChar, h: L.h },
+  ];
+}
+
+function separateLabels(list, rounds = 400) {
+  for (let r = 0; r < rounds; r++) {
+    let moved = false;
+    for (let i = 0; i < list.length; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+        const a = list[i], b = list[j];
+        for (const ba of boxesOf(a)) {
+          for (const bb of boxesOf(b)) {
+            if (ba.dot && bb.dot) continue; // dots are the force layout's job
+            const ox = Math.min(ba.x + ba.w, bb.x + bb.w) - Math.max(ba.x, bb.x) + GAP;
+            const oy = Math.min(ba.y + ba.h, bb.y + bb.h) - Math.max(ba.y, bb.y) + GAP;
+            if (ox <= 0 || oy <= 0) continue;
+            // Labels are wide and short, so a vertical nudge is almost always
+            // the smaller move; go sideways only when that is cheaper.
+            const vertical = oy <= ox;
+            const amt = (vertical ? oy : ox) / 2 + 0.5;
+            const sign = vertical
+              ? (ba.y + ba.h / 2 <= bb.y + bb.h / 2 ? -1 : 1)
+              : (ba.x + ba.w / 2 <= bb.x + bb.w / 2 ? -1 : 1);
+            if (vertical) { a.y += sign * amt; b.y -= sign * amt; }
+            else          { a.x += sign * amt; b.x -= sign * amt; }
+            moved = true;
+          }
+        }
+      }
+    }
+    if (!moved) return r;
+  }
+  return rounds;
+}
+
+const labelRounds = separateLabels(nodes);
+for (const n of nodes) { n.x = Math.round(n.x); n.y = Math.round(n.y); }
+
+// Tight viewBox around every dot and label box, so nothing is clipped and
+// no empty canvas ships.
+const allBoxes = nodes.flatMap(boxesOf);
+const PAD = 20;
+const vbX = Math.floor(Math.min(...allBoxes.map(b => b.x)) - PAD);
+const vbY = Math.floor(Math.min(...allBoxes.map(b => b.y)) - PAD);
+const vbW = Math.ceil(Math.max(...allBoxes.map(b => b.x + b.w)) + PAD - vbX);
+const vbH = Math.ceil(Math.max(...allBoxes.map(b => b.y + b.h)) + PAD - vbY);
 data.viewbox = `${vbX} ${vbY} ${vbW} ${vbH}`;
 
 // Strip simulation-runtime fields, keep declared keys.
@@ -322,4 +396,8 @@ function serialize(d) {
 }
 
 writeFileSync(dataPath, serialize(data));
-console.log(`Wrote ${cleaned.length} nodes and ${contours.length} contours after ${TICKS} ticks.`);
+console.log(
+  `Wrote ${cleaned.length} nodes and ${contours.length} contours` +
+  (KEEP_LAYOUT ? ' (kept layout)' : ` after ${TICKS} ticks`) +
+  `; labels settled in ${labelRounds} rounds.`
+);
